@@ -1,0 +1,27 @@
+{
+  "name": "aero",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch --env-file=.env src/index.ts",
+    "type-check": "tsc --noEmit src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "prisma": "^7.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "pg": "^8.20.0",
+    "zod": "^4.3.6"
+  }
+}

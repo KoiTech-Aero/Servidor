@@ -1,0 +1,15 @@
+enum Role {
+  Engenheiro
+  Gestor
+}
+
+model Usuario {
+  id            String   @id @default(uuid())
+  nome          String   @db.VarChar(150)
+  email         String   @db.VarChar(255)
+  senha         String   @db.Text
+  role          Role     @default(Engenheiro)
+  status        Boolean  @db.Boolean
+  data_cadastro DateTime @db.Date
+  solicitacao   Solicitacao?
+}

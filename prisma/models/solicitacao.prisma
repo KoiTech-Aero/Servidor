@@ -1,0 +1,16 @@
+enum Status {
+  Aprovado
+  Pendente
+  Recusado
+}
+
+model Solicitacao {
+  id               String   @id @default(uuid())
+  titulo           String   @db.VarChar(150)
+  motivo           String   @db.VarChar(255)
+  data_solicitacao DateTime @db.Date
+  status           Status   @default(Pendente)
+  id_usuario       String   @unique @default(uuid())
+  usuario          Usuario  @relation(fields: [id_usuario], references: [id])
+  solicitacao      Norma?
+}
