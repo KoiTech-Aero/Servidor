@@ -1,0 +1,10 @@
+model Versao {
+    id_norma        String      @db.VarChar(255)
+    versao_numero   String      @db.VarChar(255)
+    descricao       String      @db.VarChar(255)
+    data_publicacao DateTime    @db.Date @default(now())
+    path_file       String      @db.Text
+    status          Boolean     @db.Boolean @default(false)
+    norma           Norma       @relation(fields: [id_norma], references: [codigo])
+    @@id([id_norma, versao_numero])
+}

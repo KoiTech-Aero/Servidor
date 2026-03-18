@@ -6,4 +6,6 @@ model Norma {
   orgao_emissor  String @db.VarChar(50)
   id_solicitacao String @unique
   solicitacao    Solicitacao @relation(fields: [id_solicitacao], references: [id])
+  
+  versaos        Versao[] 
 }

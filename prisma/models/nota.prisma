@@ -1,0 +1,9 @@
+model Nota {
+    id                  String      @id @db.VarChar(255) @default(uuid())
+    text                String      @db.VarChar(255) @default(uuid())
+    status              Status      @default(Pendente)
+    data_solicitacao    DateTime    @db.Date @default(now())
+    data_aprovacao      DateTime?   @db.Date
+    id_solicitacao      String      @unique @db.VarChar(255)
+    solicitacao         Solicitacao @relation(fields: [id_solicitacao], references: [id])
+}

@@ -13,4 +13,5 @@ model Solicitacao {
   id_usuario       String   @unique @default(uuid())
   usuario          Usuario  @relation(fields: [id_usuario], references: [id])
   solicitacao      Norma?
+  nota             Nota?
 }
