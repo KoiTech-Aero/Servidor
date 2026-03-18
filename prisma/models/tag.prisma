@@ -1,0 +1,6 @@
+model Tag {
+  id String @id @db.Text @default(uuid())
+  nome String @db.VarChar(30)
+  descricao String @db.VarChar(255)
+  normas NormasTags[]
+}

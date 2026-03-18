@@ -1,0 +1,8 @@
+model NormasTags{
+  norma Norma @relation(fields:[id_norma], references:[id])
+  id_norma String
+  tag Tag @relation(fields:[id_tag], references:[id])
+  id_tag String
+
+  @@id([id_tag, id_norma])
+}

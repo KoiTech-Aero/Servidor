@@ -1,9 +1,16 @@
 model Nota {
-    id                  String      @id @db.VarChar(255) @default(uuid())
-    text                String      @db.VarChar(255) @default(uuid())
-    status              Status      @default(Pendente)
-    data_solicitacao    DateTime    @db.Date @default(now())
-    data_aprovacao      DateTime?   @db.Date
-    id_solicitacao      String      @unique @db.VarChar(255)
-    solicitacao         Solicitacao @relation(fields: [id_solicitacao], references: [id])
+  id               String      @id @default(uuid()) @db.VarChar(255)
+  text             String      @default(uuid()) @db.VarChar(255)
+  status           Status      @default(Pendente)
+  data_solicitacao DateTime    @default(now()) @db.Date
+  data_aprovacao   DateTime?   @db.Date
+
+  //Relacionamento com Versao
+  versao Versao @relation(fields:[id_norma, versao_numero], references:[id_norma, versao_numero])
+  id_norma String
+  versao_numero String
+
+  //Relacionamento com solicitacao
+  id_solicitacao   String      @unique @db.VarChar(255)
+  solicitacao      Solicitacao @relation(fields: [id_solicitacao], references: [id])
 }

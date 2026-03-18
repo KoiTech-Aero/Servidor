@@ -10,8 +10,12 @@ model Solicitacao {
   motivo           String   @db.VarChar(255)
   data_solicitacao DateTime @db.Date
   status           Status   @default(Pendente)
-  id_usuario       String   @unique @default(uuid())
+  //Relacionamento com Norma
+  norma            Norma?    @relation(fields: [id_norma], references: [id])
+  id_norma         String?
+  //Relacionamento com Usuário
   usuario          Usuario  @relation(fields: [id_usuario], references: [id])
-  solicitacao      Norma?
+  id_usuario       String   @unique @default(uuid())
+  //Relacionamento com Nota
   nota             Nota?
 }

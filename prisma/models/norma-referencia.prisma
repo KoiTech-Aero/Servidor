@@ -1,0 +1,11 @@
+model NormaReferencia {
+  //Relacionamento com Norma
+  norma_referencia Norma @relation("NormaReferencia", fields:[id_norma_referencia], references:[id])
+  id_norma_referencia String @db.Text
+
+  norma_referenciada Norma @relation("NormaReferenciada", fields:[id_norma_referenciada], references:[id])
+  id_norma_referenciada String @db.Text
+  
+  observacao String @db.Text
+  @@id(name: "NormaReferenciaId", fields: [id_norma_referencia, id_norma_referenciada])
+}
