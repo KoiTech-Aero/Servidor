@@ -1,14 +1,25 @@
+import { env } from "node:process";
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
-import z, { any } from "zod";
+import z from "zod";
 import { PrismaNormaRepository } from "../repositories/prisma/PrismaNormaRepository.js";
 import { CreateNorma } from "../services/createNorma.js";
 
 const postNormaSchema = {
 	body: z.object({
-		codigo: z.string().max(255),
-		titulo: z.string().max(100),
-		area_tecnica: z.string().max(50),
-		orgao_emissor: z.string().max(50),
+		norma: z.object({
+			codigo: z.string(),
+			titulo: z.string(),
+			escopo: z.string(),
+			area_tecnica: z.string(),
+			orgao_emissor: z.string(),
+		}),
+		versao: z.object({
+			versao_numero: z.string(),
+			descricao: z.string(),
+			data_publicacao: z.coerce.date(),
+			path_file: z.url(),
+			status: z.boolean(),
+		}),
 	}),
 	response: {
 		201: z.object({
@@ -33,6 +44,8 @@ export const postNorma: FastifyPluginAsyncZod = async (fastify) => {
 				const norma = await createNorma.execute(dataNorma);
 				reply.code(201).send(norma);
 			} catch (err) {
+				fastify.log.error(env.DATABASE_URL);
+				fastify.log.error(err);
 				return reply.status(500).send({
 					message: "Erro interno ao salvar a norma.",
 					error: err,

@@ -1,11 +1,24 @@
 import type { FastifyInstance } from "fastify";
+import z from "zod";
 
-export interface CreateNormaData {
-	codigo: string;
-	titulo: string;
-	area_tecnica: string;
-	orgao_emissor: string;
-}
+const createNormaDataSchema = z.object({
+	norma: z.object({
+		codigo: z.string(),
+		titulo: z.string(),
+		escopo: z.string(),
+		area_tecnica: z.string(),
+		orgao_emissor: z.string(),
+	}),
+	versao: z.object({
+		versao_numero: z.string(),
+		descricao: z.string(),
+		data_publicacao: z.coerce.date(),
+		path_file: z.url(),
+		status: z.boolean(),
+	}),
+});
+
+export type CreateNormaData = z.infer<typeof createNormaDataSchema>;
 
 export interface CreateNormaResponse {
 	statusCode: number;

@@ -6,6 +6,11 @@ configDotenv({
 });
 
 const envSchema = z.object({
+	POSTGRES_HOST: z.string().nullable(),
+	POSTGRES_PORT: z.string().nullable(),
+	POSTGRES_USER: z.string().nullable(),
+	POSTGRES_DB: z.string().nullable(),
+	POSTGRES_PASSWORD: z.string().nullable(),
 	DATABASE_URL: z.url().refine((url) => url.startsWith("postgresql://")),
 	SERVER_PORT: z.coerce.number(),
 });

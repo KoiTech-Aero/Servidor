@@ -2,15 +2,26 @@ import type { FastifyInstance } from "fastify";
 import type { CreateNormaData, NormaRepository } from "../NormaRepository.js";
 
 export class PrismaNormaRepository implements NormaRepository {
-	async create(data: CreateNormaData, fastify: FastifyInstance) {
+	async create({ norma, versao }: CreateNormaData, fastify: FastifyInstance) {
 		const response = await fastify.prisma.norma.create({
-			data,
+			data: {
+				codigo: norma.codigo,
+				titulo: norma.titulo,
+				escopo: norma.escopo,
+				area_tecnica: norma.area_tecnica,
+				orgao_emissor: norma.orgao_emissor,
+				versaos: {
+					create: {
+						versao_numero: versao.versao_numero,
+						descricao: versao.descricao,
+						data_publicacao: versao.data_publicacao,
+						path_file: versao.path_file,
+						status: versao.status,
+					},
+				},
+			},
 		});
 
 		return { statusCode: 201, id: response.id };
-	}
-
-	fudeu() {
-		console.log();
 	}
 }
