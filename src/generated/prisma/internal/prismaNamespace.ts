@@ -1063,6 +1063,7 @@ export const NormaScalarFieldEnum = {
   id: 'id',
   codigo: 'codigo',
   titulo: 'titulo',
+  escopo: 'escopo',
   area_tecnica: 'area_tecnica',
   orgao_emissor: 'orgao_emissor'
 } as const

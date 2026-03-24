@@ -1,14 +1,15 @@
 model Norma {
-  id             String      @id @default(uuid())
-  codigo         String      @unique @db.VarChar(255)
-  titulo         String      @db.VarChar(100)
-  area_tecnica   String      @db.VarChar(50)
-  orgao_emissor  String      @db.VarChar(50)
+  id            String @id @default(uuid())
+  codigo        String @unique @db.VarChar(255)
+  titulo        String @db.VarChar(100)
+  escopo        String @db.Text
+  area_tecnica  String @db.VarChar(50)
+  orgao_emissor String @db.VarChar(50)
 
   // Relacionamentos
-  solicitacoes Solicitacao[]
-  versaos Versao[]
-  tags NormasTags[]
+  solicitacoes  Solicitacao[]
+  versaos       Versao[]
+  tags          NormasTags[]
   referencias   NormaReferencia[] @relation("NormaReferencia")
-  referenciadas  NormaReferencia[] @relation("NormaReferenciada")
+  referenciadas NormaReferencia[] @relation("NormaReferenciada")
 }

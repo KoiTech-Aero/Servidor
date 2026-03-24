@@ -28,6 +28,7 @@ export type NormaMinAggregateOutputType = {
   id: string | null
   codigo: string | null
   titulo: string | null
+  escopo: string | null
   area_tecnica: string | null
   orgao_emissor: string | null
 }
@@ -36,6 +37,7 @@ export type NormaMaxAggregateOutputType = {
   id: string | null
   codigo: string | null
   titulo: string | null
+  escopo: string | null
   area_tecnica: string | null
   orgao_emissor: string | null
 }
@@ -44,6 +46,7 @@ export type NormaCountAggregateOutputType = {
   id: number
   codigo: number
   titulo: number
+  escopo: number
   area_tecnica: number
   orgao_emissor: number
   _all: number
@@ -54,6 +57,7 @@ export type NormaMinAggregateInputType = {
   id?: true
   codigo?: true
   titulo?: true
+  escopo?: true
   area_tecnica?: true
   orgao_emissor?: true
 }
@@ -62,6 +66,7 @@ export type NormaMaxAggregateInputType = {
   id?: true
   codigo?: true
   titulo?: true
+  escopo?: true
   area_tecnica?: true
   orgao_emissor?: true
 }
@@ -70,6 +75,7 @@ export type NormaCountAggregateInputType = {
   id?: true
   codigo?: true
   titulo?: true
+  escopo?: true
   area_tecnica?: true
   orgao_emissor?: true
   _all?: true
@@ -151,6 +157,7 @@ export type NormaGroupByOutputType = {
   id: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   _count: NormaCountAggregateOutputType | null
@@ -180,6 +187,7 @@ export type NormaWhereInput = {
   id?: Prisma.StringFilter<"Norma"> | string
   codigo?: Prisma.StringFilter<"Norma"> | string
   titulo?: Prisma.StringFilter<"Norma"> | string
+  escopo?: Prisma.StringFilter<"Norma"> | string
   area_tecnica?: Prisma.StringFilter<"Norma"> | string
   orgao_emissor?: Prisma.StringFilter<"Norma"> | string
   solicitacoes?: Prisma.SolicitacaoListRelationFilter
@@ -193,6 +201,7 @@ export type NormaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   codigo?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
+  escopo?: Prisma.SortOrder
   area_tecnica?: Prisma.SortOrder
   orgao_emissor?: Prisma.SortOrder
   solicitacoes?: Prisma.SolicitacaoOrderByRelationAggregateInput
@@ -209,6 +218,7 @@ export type NormaWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.NormaWhereInput[]
   NOT?: Prisma.NormaWhereInput | Prisma.NormaWhereInput[]
   titulo?: Prisma.StringFilter<"Norma"> | string
+  escopo?: Prisma.StringFilter<"Norma"> | string
   area_tecnica?: Prisma.StringFilter<"Norma"> | string
   orgao_emissor?: Prisma.StringFilter<"Norma"> | string
   solicitacoes?: Prisma.SolicitacaoListRelationFilter
@@ -222,6 +232,7 @@ export type NormaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   codigo?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
+  escopo?: Prisma.SortOrder
   area_tecnica?: Prisma.SortOrder
   orgao_emissor?: Prisma.SortOrder
   _count?: Prisma.NormaCountOrderByAggregateInput
@@ -236,6 +247,7 @@ export type NormaScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Norma"> | string
   codigo?: Prisma.StringWithAggregatesFilter<"Norma"> | string
   titulo?: Prisma.StringWithAggregatesFilter<"Norma"> | string
+  escopo?: Prisma.StringWithAggregatesFilter<"Norma"> | string
   area_tecnica?: Prisma.StringWithAggregatesFilter<"Norma"> | string
   orgao_emissor?: Prisma.StringWithAggregatesFilter<"Norma"> | string
 }
@@ -244,6 +256,7 @@ export type NormaCreateInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoCreateNestedManyWithoutNormaInput
@@ -257,6 +270,7 @@ export type NormaUncheckedCreateInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoUncheckedCreateNestedManyWithoutNormaInput
@@ -270,6 +284,7 @@ export type NormaUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUpdateManyWithoutNormaNestedInput
@@ -283,6 +298,7 @@ export type NormaUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUncheckedUpdateManyWithoutNormaNestedInput
@@ -296,6 +312,7 @@ export type NormaCreateManyInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
 }
@@ -304,6 +321,7 @@ export type NormaUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -312,6 +330,7 @@ export type NormaUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -325,6 +344,7 @@ export type NormaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   codigo?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
+  escopo?: Prisma.SortOrder
   area_tecnica?: Prisma.SortOrder
   orgao_emissor?: Prisma.SortOrder
 }
@@ -333,6 +353,7 @@ export type NormaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   codigo?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
+  escopo?: Prisma.SortOrder
   area_tecnica?: Prisma.SortOrder
   orgao_emissor?: Prisma.SortOrder
 }
@@ -341,6 +362,7 @@ export type NormaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   codigo?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
+  escopo?: Prisma.SortOrder
   area_tecnica?: Prisma.SortOrder
   orgao_emissor?: Prisma.SortOrder
 }
@@ -426,6 +448,7 @@ export type NormaCreateWithoutReferenciasInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoCreateNestedManyWithoutNormaInput
@@ -438,6 +461,7 @@ export type NormaUncheckedCreateWithoutReferenciasInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoUncheckedCreateNestedManyWithoutNormaInput
@@ -455,6 +479,7 @@ export type NormaCreateWithoutReferenciadasInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoCreateNestedManyWithoutNormaInput
@@ -467,6 +492,7 @@ export type NormaUncheckedCreateWithoutReferenciadasInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoUncheckedCreateNestedManyWithoutNormaInput
@@ -495,6 +521,7 @@ export type NormaUpdateWithoutReferenciasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUpdateManyWithoutNormaNestedInput
@@ -507,6 +534,7 @@ export type NormaUncheckedUpdateWithoutReferenciasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUncheckedUpdateManyWithoutNormaNestedInput
@@ -530,6 +558,7 @@ export type NormaUpdateWithoutReferenciadasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUpdateManyWithoutNormaNestedInput
@@ -542,6 +571,7 @@ export type NormaUncheckedUpdateWithoutReferenciadasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUncheckedUpdateManyWithoutNormaNestedInput
@@ -554,6 +584,7 @@ export type NormaCreateWithoutTagsInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoCreateNestedManyWithoutNormaInput
@@ -566,6 +597,7 @@ export type NormaUncheckedCreateWithoutTagsInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoUncheckedCreateNestedManyWithoutNormaInput
@@ -594,6 +626,7 @@ export type NormaUpdateWithoutTagsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUpdateManyWithoutNormaNestedInput
@@ -606,6 +639,7 @@ export type NormaUncheckedUpdateWithoutTagsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUncheckedUpdateManyWithoutNormaNestedInput
@@ -618,6 +652,7 @@ export type NormaCreateWithoutSolicitacoesInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   versaos?: Prisma.VersaoCreateNestedManyWithoutNormaInput
@@ -630,6 +665,7 @@ export type NormaUncheckedCreateWithoutSolicitacoesInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   versaos?: Prisma.VersaoUncheckedCreateNestedManyWithoutNormaInput
@@ -658,6 +694,7 @@ export type NormaUpdateWithoutSolicitacoesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   versaos?: Prisma.VersaoUpdateManyWithoutNormaNestedInput
@@ -670,6 +707,7 @@ export type NormaUncheckedUpdateWithoutSolicitacoesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   versaos?: Prisma.VersaoUncheckedUpdateManyWithoutNormaNestedInput
@@ -682,6 +720,7 @@ export type NormaCreateWithoutVersaosInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoCreateNestedManyWithoutNormaInput
@@ -694,6 +733,7 @@ export type NormaUncheckedCreateWithoutVersaosInput = {
   id?: string
   codigo: string
   titulo: string
+  escopo: string
   area_tecnica: string
   orgao_emissor: string
   solicitacoes?: Prisma.SolicitacaoUncheckedCreateNestedManyWithoutNormaInput
@@ -722,6 +762,7 @@ export type NormaUpdateWithoutVersaosInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUpdateManyWithoutNormaNestedInput
@@ -734,6 +775,7 @@ export type NormaUncheckedUpdateWithoutVersaosInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigo?: Prisma.StringFieldUpdateOperationsInput | string
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  escopo?: Prisma.StringFieldUpdateOperationsInput | string
   area_tecnica?: Prisma.StringFieldUpdateOperationsInput | string
   orgao_emissor?: Prisma.StringFieldUpdateOperationsInput | string
   solicitacoes?: Prisma.SolicitacaoUncheckedUpdateManyWithoutNormaNestedInput
@@ -813,6 +855,7 @@ export type NormaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   codigo?: boolean
   titulo?: boolean
+  escopo?: boolean
   area_tecnica?: boolean
   orgao_emissor?: boolean
   solicitacoes?: boolean | Prisma.Norma$solicitacoesArgs<ExtArgs>
@@ -827,6 +870,7 @@ export type NormaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   codigo?: boolean
   titulo?: boolean
+  escopo?: boolean
   area_tecnica?: boolean
   orgao_emissor?: boolean
 }, ExtArgs["result"]["norma"]>
@@ -835,6 +879,7 @@ export type NormaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   codigo?: boolean
   titulo?: boolean
+  escopo?: boolean
   area_tecnica?: boolean
   orgao_emissor?: boolean
 }, ExtArgs["result"]["norma"]>
@@ -843,11 +888,12 @@ export type NormaSelectScalar = {
   id?: boolean
   codigo?: boolean
   titulo?: boolean
+  escopo?: boolean
   area_tecnica?: boolean
   orgao_emissor?: boolean
 }
 
-export type NormaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "codigo" | "titulo" | "area_tecnica" | "orgao_emissor", ExtArgs["result"]["norma"]>
+export type NormaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "codigo" | "titulo" | "escopo" | "area_tecnica" | "orgao_emissor", ExtArgs["result"]["norma"]>
 export type NormaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   solicitacoes?: boolean | Prisma.Norma$solicitacoesArgs<ExtArgs>
   versaos?: boolean | Prisma.Norma$versaosArgs<ExtArgs>
@@ -872,6 +918,7 @@ export type $NormaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     codigo: string
     titulo: string
+    escopo: string
     area_tecnica: string
     orgao_emissor: string
   }, ExtArgs["result"]["norma"]>
@@ -1305,6 +1352,7 @@ export interface NormaFieldRefs {
   readonly id: Prisma.FieldRef<"Norma", 'String'>
   readonly codigo: Prisma.FieldRef<"Norma", 'String'>
   readonly titulo: Prisma.FieldRef<"Norma", 'String'>
+  readonly escopo: Prisma.FieldRef<"Norma", 'String'>
   readonly area_tecnica: Prisma.FieldRef<"Norma", 'String'>
   readonly orgao_emissor: Prisma.FieldRef<"Norma", 'String'>
 }
