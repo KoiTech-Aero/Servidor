@@ -4,12 +4,14 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "tsc && npx vitest",
+    "test": "NODE_ENV=test tsc && npm run db:up && npm run wait-for-postgres && concurrently \"npm run start:watch\" \"npx wait-on http://localhost:3000/health && npx vitest\"",
     "build": "tsc",
-    "start": "node --env-file=.env dist/server.js",
-    "dev": "tsx watch --env-file=.env src/server.ts",
+    "start:watch": "NODE_ENV=test node --watch dist/server.js",
+    "dev": "NODE_ENV=test tsx watch src/server.ts",
     "type-check": "tsc --noEmit src/server.ts",
-    "db:up": "docker compose -f infra/compose.yaml up -d"
+    "db:up": "docker compose -f infra/compose.yaml up -d",
+    "db:stop": "docker compose -f infra/compose.yaml stop",
+    "wait-for-postgres": "node infra/scripts/wait-for-postgres.js"
   },
   "keywords": [],
   "author": "",
@@ -17,12 +19,14 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^25.5.0",
+    "concurrently": "^9.2.1",
     "cripto": "^1.1.4",
     "pino-pretty": "^13.1.3",
     "prisma": "^7.5.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.0",
+    "wait-on": "^9.0.4"
   },
   "dependencies": {
     "@prisma/adapter-neon": "^7.5.0",
