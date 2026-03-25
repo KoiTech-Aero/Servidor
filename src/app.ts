@@ -1,4 +1,4 @@
-import fastify from "fastify";
+import Fastify, { type FastifyError } from "fastify";
 import {
 	serializerCompiler,
 	validatorCompiler,
@@ -8,16 +8,22 @@ import prismaPlugin from "./plugin/db-connector.js";
 import { postNorma } from "./routes/post-norma.js";
 
 export async function buildServer(opts = {}) {
-	const app = fastify(opts).withTypeProvider<ZodTypeProvider>();
-	app.setValidatorCompiler(validatorCompiler);
-	app.setSerializerCompiler(serializerCompiler);
+	const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
+	fastify.setValidatorCompiler(validatorCompiler);
+	fastify.setSerializerCompiler(serializerCompiler);
 
-	app.get("/health", (request, reply) => {
+	fastify.setErrorHandler(async (e: FastifyError, request, reply) => {
+		if (e.code === "FST_ERR_VALIDATION")
+			return reply.status(400).send({ Error: e.code, Message: e.message });
+		return reply.send(e);
+	});
+
+	fastify.get("/health", (request, reply) => {
 		reply.code(200).send({ status: "OK" });
 	});
 
-	await app.register(prismaPlugin);
-	await app.register(postNorma);
+	await fastify.register(prismaPlugin);
+	await fastify.register(postNorma);
 
-	return app;
+	return fastify;
 }

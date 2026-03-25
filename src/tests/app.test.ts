@@ -2,10 +2,10 @@ import { expect, test } from "vitest";
 import { buildServer } from "..//app.js";
 
 test("Testing que /health route", async () => {
-	const app = await buildServer();
-	await app.ready();
+	const fastify = await buildServer();
+	await fastify.ready();
 
-	const response = await app.inject({
+	const response = await fastify.inject({
 		method: "GET",
 		url: "/health",
 	});

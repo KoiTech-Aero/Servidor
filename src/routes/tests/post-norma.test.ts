@@ -12,20 +12,20 @@ import { buildServer } from "../../app.js";
 import { env } from "../../env.js";
 
 describe.concurrent("POST /addNorma - Criando norma", () => {
-	let app: FastifyInstance;
+	let fastify: FastifyInstance;
 
 	type Table = {
 		tablename: string;
 	};
 
 	async function truncadeTables() {
-		const tablesNames = await app.prisma.$queryRaw<
+		const tablesNames = await fastify.prisma.$queryRaw<
 			Table[]
 		>`SELECT tablename FROM pg_tables WHERE schemaname='public'`;
 
 		for (const { tablename } of tablesNames) {
-			app.log.info(tablesNames);
-			await app.prisma.$executeRawUnsafe(
+			fastify.log.info(tablesNames);
+			await fastify.prisma.$executeRawUnsafe(
 				`TRUNCATE TABLE public."${tablename}" RESTART IDENTITY CASCADE;`,
 			);
 		}
@@ -38,14 +38,14 @@ describe.concurrent("POST /addNorma - Criando norma", () => {
 		if (env.DATABASE_URL.includes("neon.tech"))
 			throw new Error("Banco Neon detectado");
 
-		app = await buildServer();
-		await app.ready();
+		fastify = await buildServer();
+		await fastify.ready();
 	});
 
 	beforeEach(async () => await truncadeTables());
 
 	afterAll(async () => {
-		await app.close();
+		await fastify.close();
 		await truncadeTables();
 	});
 
