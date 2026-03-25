@@ -1,5 +1,7 @@
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import type { FastifyInstance } from "fastify";
 import z from "zod";
+import { PrismaInsertError } from "../entidades/prismaInsertError.js";
 import type { NormaRepository } from "../repositories/NormaRepository.js";
 
 const createNormaRequestSchema = z.object({
@@ -28,8 +30,22 @@ export class CreateNorma {
 	) {}
 
 	async execute(data: CreateNormaRequest) {
-		const norma = await this.normaRepository.create(data, this.fastify);
+		try {
+			const norma = await this.normaRepository.create(data, this.fastify);
 
-		return norma;
+			return norma;
+		} catch (e) {
+			if (e instanceof PrismaClientKnownRequestError) {
+				if (e.code === "P2002") {
+					throw new PrismaInsertError(
+						`Violação de constraint unica. Uma norma não pode ser criada com esse código (${data.norma.codigo})`,
+						409,
+						e.code,
+						"Insert Error",
+						e.cause,
+					);
+				}
+			}
+		}
 	}
 }

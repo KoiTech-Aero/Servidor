@@ -1,8 +1,13 @@
-import { env } from "node:process";
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
+import { PrismaInsertError } from "../entidades/prismaInsertError.js";
 import { PrismaNormaRepository } from "../repositories/prisma/PrismaNormaRepository.js";
 import { CreateNorma } from "../services/createNorma.js";
+
+const errorSchema = z.object({
+	typeError: z.string(),
+	message: z.string(),
+});
 
 const postNormaSchema = {
 	body: z.object({
@@ -23,9 +28,10 @@ const postNormaSchema = {
 	}),
 	response: {
 		201: z.object({
-			id: z.uuid(),
+			id: z.string(),
 		}),
-		500: z.any(),
+		409: errorSchema,
+		500: errorSchema,
 	},
 };
 
@@ -42,14 +48,21 @@ export const postNorma: FastifyPluginAsyncZod = async (fastify) => {
 
 			try {
 				const norma = await createNorma.execute(dataNorma);
-				reply.code(201).send(norma);
-			} catch (err) {
-				fastify.log.error(env.DATABASE_URL);
-				fastify.log.error(err);
-				return reply.status(500).send({
-					message: "Erro interno ao salvar a norma.",
-					error: err,
-				});
+				if (norma) reply.code(201).send(norma);
+			} catch (e) {
+				if (e instanceof PrismaInsertError) {
+					const typeError = e.typeError;
+					const message = e.message;
+
+					if (e.responseStatusCode === 409)
+						return reply.status(409).send({ typeError, message });
+				}
+
+				if (e instanceof Error) {
+					return reply
+						.code(500)
+						.send({ typeError: e.name, message: e.message });
+				}
 			}
 		},
 	);
