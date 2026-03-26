@@ -1,5 +1,8 @@
 import type { FastifyInstance } from "fastify";
-import type { CreateNormaData, NormaRepository } from "../NormaRepository.js";
+import type {
+	CreateNormaData,
+	NormaRepository,
+} from "../../entidades/NormaRepository.js";
 
 export class PrismaNormaRepository implements NormaRepository {
 	async create({ norma, versao }: CreateNormaData, fastify: FastifyInstance) {

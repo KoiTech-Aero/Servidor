@@ -1,8 +1,8 @@
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import type { FastifyInstance } from "fastify";
 import z from "zod";
+import type { NormaRepository } from "../entidades/NormaRepository.js";
 import { PrismaInsertError } from "../entidades/prismaInsertError.js";
-import type { NormaRepository } from "../repositories/NormaRepository.js";
 
 const createNormaRequestSchema = z.object({
 	norma: z.object({
