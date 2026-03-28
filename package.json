@@ -4,14 +4,16 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "NODE_ENV=test tsc && npm run db:up && npm run wait-for-postgres && concurrently \"npm run start:watch\" \"npx wait-on http://localhost:3000/health && npx vitest\"",
+    "cli": "node src/cli.ts",
     "build": "tsc",
-    "start:watch": "NODE_ENV=test node --watch dist/server.js",
-    "dev": "NODE_ENV=test tsx watch src/server.ts",
     "type-check": "tsc --noEmit src/server.ts",
-    "db:up": "docker compose -f infra/compose.yaml up -d",
+    "test": "tsc && npm run db:up && npm run wait-for-postgres && concurrently \"npm run start:watch\" \"npx wait-on http://localhost:3000/health && npx vitest\"",
+    "start:watch": "node --watch dist/server.js",
+    "dev": "tsx watch src/server.ts",
+    "db:up": "docker compose -f infra/compose.yaml up -d && npm run wait-for-postgres && npm run migrate",
     "db:stop": "docker compose -f infra/compose.yaml stop",
     "wait-for-postgres": "node infra/scripts/wait-for-postgres.js",
+    "migrate": "npx prisma migrate dev && npx prisma generate dev",
     "prepare": "husky"
   },
   "keywords": [],
@@ -22,6 +24,7 @@
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@types/node": "^25.5.0",
+    "commitizen": "^4.3.1",
     "concurrently": "^9.2.1",
     "cripto": "^1.1.4",
     "cz-conventional-changelog": "^3.3.0",
@@ -34,12 +37,15 @@
     "wait-on": "^9.0.4"
   },
   "dependencies": {
+    "@inquirer/prompts": "^8.3.2",
     "@prisma/adapter-neon": "^7.5.0",
     "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
+    "@types/inquirer": "^9.0.9",
     "dotenv": "^17.3.1",
     "fastify": "^5.8.2",
     "fastify-type-provider-zod": "^6.1.0",
+    "inquirer": "^13.3.2",
     "zod": "^4.3.6"
   },
   "config": {
