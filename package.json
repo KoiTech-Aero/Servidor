@@ -8,7 +8,7 @@
     "build": "tsc",
     "type-check": "tsc --noEmit src/server.ts",
     "test": "tsc && npm run db:up && npm run wait-for-postgres && concurrently \"npm run start:watch\" \"npx wait-on http://localhost:3000/health && npx vitest\"",
-    "start:watch": "node --watch dist/server.js",
+    "start:watch": "tsc && node --watch dist/server.js",
     "dev": "tsx watch src/server.ts",
     "db:up": "docker compose -f infra/compose.yaml up -d && npm run wait-for-postgres && npm run migrate",
     "db:stop": "docker compose -f infra/compose.yaml stop",

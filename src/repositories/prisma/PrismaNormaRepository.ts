@@ -27,4 +27,21 @@ export class PrismaNormaRepository implements NormaRepository {
 
 		return { statusCode: 201, id: response.id };
 	}
+
+	async read(fastify: FastifyInstance){
+		const response = await fastify.prisma.norma.findMany(
+			{
+				include: {
+					versaos: {
+						select: {
+							data_publicacao: true,
+							status: true
+						}
+					}
+				}
+			})
+
+
+		return response
+	}
 }

@@ -5,6 +5,7 @@ import {
 	type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import prismaPlugin from "./plugin/db-connector.js";
+import { getNorma } from "./routes/get-norma.js";
 import { postNorma } from "./routes/post-norma.js";
 
 export async function buildServer(opts = {}) {
@@ -24,6 +25,7 @@ export async function buildServer(opts = {}) {
 
 	await fastify.register(prismaPlugin);
 	await fastify.register(postNorma);
+	await fastify.register(getNorma);
 
 	return fastify;
 }
