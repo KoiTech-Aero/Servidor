@@ -1,7 +1,7 @@
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import { buildServer } from "./app.js";
 import { PrismaError } from "./entidades/prismaError.js";
 import { env } from "./env.js";
-import { PrismaClientKnownRequestError } from "./generated/prisma/internal/prismaNamespace.js";
 
 const start = async () => {
 	const isDevOrTest =
