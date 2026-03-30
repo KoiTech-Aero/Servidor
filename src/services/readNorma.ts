@@ -5,6 +5,7 @@ import {
 import type { FastifyInstance } from "fastify/types/instance.js";
 import type { NormaRepository } from "../entidades/NormaRepository.js";
 import { PrismaError } from "../entidades/prismaError.js";
+import type { Conditions } from "../types/conditions.js";
 
 export class ReadNorma {
 	constructor(
@@ -12,9 +13,13 @@ export class ReadNorma {
 		private fastify: FastifyInstance,
 	) {}
 
-	async execute() {
+	async execute(conditions: Conditions) {
 		try {
-			const normas = await this.normaRepository.read(this.fastify);
+			const boolStatus = conditions?.status;
+			const normas = await this.normaRepository.read({
+				conditions: { status: boolStatus },
+				fastify: this.fastify,
+			});
 			return normas;
 		} catch (e) {
 			if (e instanceof PrismaClientInitializationError) {

@@ -2,6 +2,7 @@ import type { FastifyInstance } from "fastify";
 import type {
 	CreateNormaData,
 	NormaRepository,
+	ReadNormaProps,
 } from "../../entidades/NormaRepository.js";
 
 export class PrismaNormaRepository implements NormaRepository {
@@ -28,7 +29,9 @@ export class PrismaNormaRepository implements NormaRepository {
 		return { statusCode: 201, id: response.id };
 	}
 
-	async read(fastify: FastifyInstance) {
+	async read({ conditions, fastify }: ReadNormaProps) {
+		const boolStatus = conditions?.status.toLowerCase() === "true";
+
 		const response = await fastify.prisma.norma.findMany({
 			include: {
 				versaos: {
@@ -38,6 +41,15 @@ export class PrismaNormaRepository implements NormaRepository {
 					},
 				},
 			},
+			...(conditions && {
+				where: {
+					versaos: {
+						some: {
+							status: boolStatus,
+						},
+					},
+				},
+			}),
 		});
 
 		return response;

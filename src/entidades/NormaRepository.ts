@@ -25,6 +25,12 @@ export interface CreateNormaResponse {
 	id: string;
 }
 
+export interface ReadNormaProps {
+	conditions?: {
+		status: string;
+	};
+	fastify: FastifyInstance;
+}
 export interface ReadNormaResponse {
 	id: string;
 	codigo: string;
@@ -44,5 +50,5 @@ export interface NormaRepository {
 		fastify: FastifyInstance,
 	): Promise<CreateNormaResponse>;
 
-	read(fastify: FastifyInstance): Promise<ReadNormaResponse[]>;
+	read({ conditions, fastify }: ReadNormaProps): Promise<ReadNormaResponse[]>;
 }
