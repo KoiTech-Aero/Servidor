@@ -31,7 +31,7 @@ describe.concurrent("POST /addNorma - Criando norma", () => {
 		for (const { tablename } of tablesNames) {
 			fastify.log.info(tablesNames);
 			await fastify.prisma.$executeRawUnsafe(
-				`TRUNCATE TABLE public."${tablename}" RESTART IDENTITY CASCADE;`,
+				`TRUNCATE TABLE public."${tablename}" CASCADE;`,
 			);
 		}
 	}
@@ -50,8 +50,8 @@ describe.concurrent("POST /addNorma - Criando norma", () => {
 	beforeEach(async () => await truncadeTables());
 
 	afterAll(async () => {
-		await fastify.close();
 		await truncadeTables();
+		await fastify.close();
 	});
 
 	test("POST /addNorma - Criando norma com sucesso usando Mock", async () => {
