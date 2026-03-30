@@ -3,6 +3,7 @@ import z from "zod";
 
 configDotenv({
 	path: `.env.${process.env.NODE_ENV || "development"}`,
+	quiet: true,
 });
 
 const envSchema = z.object({
