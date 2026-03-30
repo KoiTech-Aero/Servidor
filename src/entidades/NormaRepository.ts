@@ -1,5 +1,4 @@
 import type { FastifyInstance } from "fastify";
-import type { DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES } from "react";
 import z from "zod";
 
 const createNormaDataSchema = z.object({
@@ -33,10 +32,10 @@ export interface ReadNormaResponse {
 	escopo: string;
 	area_tecnica: string;
 	orgao_emissor: string;
-	versaos:{
+	versaos: {
 		data_publicacao: Date;
-		status: boolean
-	}[]
+		status: boolean;
+	}[];
 }
 
 export interface NormaRepository {
@@ -45,7 +44,5 @@ export interface NormaRepository {
 		fastify: FastifyInstance,
 	): Promise<CreateNormaResponse>;
 
-	read(
-		fastify: FastifyInstance
-	): Promise<ReadNormaResponse[]>
+	read(fastify: FastifyInstance): Promise<ReadNormaResponse[]>;
 }

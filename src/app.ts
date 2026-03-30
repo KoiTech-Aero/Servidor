@@ -13,13 +13,13 @@ export async function buildServer(opts = {}) {
 	fastify.setValidatorCompiler(validatorCompiler);
 	fastify.setSerializerCompiler(serializerCompiler);
 
-	fastify.setErrorHandler(async (e: FastifyError, request, reply) => {
+	fastify.setErrorHandler(async (e: FastifyError, _request, reply) => {
 		if (e.code === "FST_ERR_VALIDATION")
 			return reply.status(400).send({ Error: e.code, Message: e.message });
 		return reply.send(e);
 	});
 
-	fastify.get("/health", (request, reply) => {
+	fastify.get("/health", (_request, reply) => {
 		reply.code(200).send({ status: "OK" });
 	});
 

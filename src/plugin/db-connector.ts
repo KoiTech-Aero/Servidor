@@ -34,8 +34,6 @@ const prismaPlugin = async (fastify: FastifyInstance) => {
 	if (!adapter) throw new Error("Adapter não criado");
 	const prisma = new PrismaClient({ adapter });
 
-	await prisma.$connect();
-
 	fastify.decorate("prisma", prisma);
 
 	fastify.addHook("onClose", async (server) => {

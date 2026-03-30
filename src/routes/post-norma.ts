@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
-import { PrismaInsertError } from "../entidades/prismaInsertError.js";
+import { PrismaError } from "../entidades/prismaError.js";
 import { PrismaNormaRepository } from "../repositories/prisma/PrismaNormaRepository.js";
 import { CreateNorma } from "../services/createNorma.js";
 
@@ -50,7 +50,7 @@ export const postNorma: FastifyPluginAsyncZod = async (fastify) => {
 				const norma = await createNorma.execute(dataNorma);
 				if (norma) reply.code(201).send(norma);
 			} catch (e) {
-				if (e instanceof PrismaInsertError) {
+				if (e instanceof PrismaError) {
 					const typeError = e.typeError;
 					const message = e.message;
 

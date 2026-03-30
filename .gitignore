@@ -3,4 +3,4 @@ node_modules
 .env
 .env.**
 !.env.sample
-/generated/prisma
+src/generated/*
