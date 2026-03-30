@@ -30,7 +30,10 @@ export class PrismaNormaRepository implements NormaRepository {
 	}
 
 	async read({ conditions, fastify }: ReadNormaProps) {
-		const boolStatus = conditions?.status.toLowerCase() === "true";
+		let boolStatus: boolean | null = null;
+		if(conditions?.status) {
+			boolStatus = conditions?.status === "true";
+		}
 
 		const response = await fastify.prisma.norma.findMany({
 			include: {
@@ -41,7 +44,7 @@ export class PrismaNormaRepository implements NormaRepository {
 					},
 				},
 			},
-			...(conditions && {
+			...(boolStatus && {
 				where: {
 					versaos: {
 						some: {
