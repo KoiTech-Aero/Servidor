@@ -36,6 +36,15 @@ export class PrismaNormaRepository implements NormaRepository {
 		}
 
 		const response = await fastify.prisma.norma.findMany({
+			...(boolStatus !== null && {
+				where: {
+					versaos: {
+						some: {
+							status: boolStatus
+						}
+					},
+				},
+			}),
 			include: {
 				versaos: {
 					select: {
@@ -44,15 +53,6 @@ export class PrismaNormaRepository implements NormaRepository {
 					},
 				},
 			},
-			...(boolStatus && {
-				where: {
-					versaos: {
-						some: {
-							status: boolStatus,
-						},
-					},
-				},
-			}),
 		});
 
 		return response;
