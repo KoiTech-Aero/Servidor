@@ -15,7 +15,7 @@ export async function buildServer(opts = {}) {
 
 	fastify.setErrorHandler(async (e: FastifyError, _request, reply) => {
 		if (e.code === "FST_ERR_VALIDATION")
-			return reply.status(400).send({ Error: e.code, Message: e.message });
+			return reply.status(400).send({ typeError: e.code, message: e.message });
 		return reply.send(e);
 	});
 

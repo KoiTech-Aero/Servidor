@@ -18,6 +18,11 @@ describe.concurrent("POST /addNorma - Criando norma", () => {
 		tablename: string;
 	};
 
+	interface ResponseError {
+		typeError: string;
+		message: string;
+	}
+
 	async function truncadeTables() {
 		const tablesNames = await fastify.prisma.$queryRaw<
 			Table[]
@@ -78,6 +83,72 @@ describe.concurrent("POST /addNorma - Criando norma", () => {
 			},
 		);
 
+		const body = (await response.json()) as { id: string };
+
 		expect(response.status).toBe(201);
+		expect(body).toHaveProperty("id");
+	});
+
+	test("POST /addNorma - Tenta criar norma sem enviar body", async () => {
+		const response = await fetch(
+			`http://127.0.0.1:${env.SERVER_PORT}/addNorma`,
+			{
+				method: "POST",
+			},
+		);
+
+		const body = (await response.json()) as ResponseError;
+
+		expect(response.status).toBe(400);
+		expect(body.typeError).toBe("FST_ERR_VALIDATION");
+	});
+
+	test("POST /addNorma - Tenta criar norma com código repetido", async () => {
+		const dataNorma = {
+			norma: {
+				codigo: randomUUID(),
+				titulo: "Norma de Segurança do Trabalho",
+				escopo: "Define requisitos para segurança em ambientes industriais",
+				area_tecnica: "Segurança do Trabalho",
+				orgao_emissor: "ABNT",
+			},
+			versao: {
+				versao_numero: "1.0",
+				descricao: "Versão inicial da norma",
+				data_publicacao: "2024-01-15T00:00:00.000Z",
+				path_file: "https://example.com/normas/nbr-1234.pdf",
+				status: true,
+			},
+		};
+
+		const response1 = await fetch(
+			`http://127.0.0.1:${env.SERVER_PORT}/addNorma`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(dataNorma),
+			},
+		);
+
+		const response2 = await fetch(
+			`http://127.0.0.1:${env.SERVER_PORT}/addNorma`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(dataNorma),
+			},
+		);
+
+		const body1 = (await response1.json()) as { id: string };
+		const body2 = (await response2.json()) as ResponseError;
+
+		expect(response1.status).toBe(201);
+		expect(body1).toHaveProperty("id");
+		expect(response2.status).toBe(409);
+		expect(body2.typeError).toBe("Insert Error");
 	});
 });
