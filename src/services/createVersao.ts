@@ -20,25 +20,25 @@ export class CreateVersao {
     constructor(
         private versaoRepository: VersaoRepository,
         private fastify: FastifyInstance
-    ){}
+    ) { }
 
     async execute(versaoData: CreateVersaoRequest) {
-        try{
+        try {
             const createVersao = await this.versaoRepository.create(versaoData, this.fastify)
 
             return createVersao
         } catch (e) {
-                    if (e instanceof PrismaClientKnownRequestError) {
-                        if (e.code === "P2002") {
-                            throw new PrismaError(
-                                `Violação de constraint unica. Uma norma não pode ser criada com esse código (${versaoData.id_norma}, ${versaoData.versao_numero})`,
-                                409,
-                                e.code,
-                                "Insert Error",
-                                e.cause,
-                            );
-                        }
-                    }
+            if (e instanceof PrismaClientKnownRequestError) {
+                if (e.code === "P2002") {
+                    throw new PrismaError(
+                        `Violação de constraint unica. Uma norma não pode ser criada com esse código (${versaoData.id_norma}, ${versaoData.versao_numero})`,
+                        409,
+                        e.code,
+                        "Insert Error",
+                        e.cause,
+                    );
                 }
+            }
+        }
     }
 }
