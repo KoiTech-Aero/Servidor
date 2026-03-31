@@ -1,4 +1,6 @@
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import { buildServer } from "./app.js";
+import { PrismaError } from "./entidades/prismaError.js";
 import { env } from "./env.js";
 
 const start = async () => {
@@ -11,10 +13,15 @@ const start = async () => {
 	const serverPort = env.SERVER_PORT;
 
 	try {
+		await server.prisma.$connect();
+		await server.prisma.$queryRaw`SELECT 1`;
 		const address = await server.listen({ port: serverPort, host: "0.0.0.0" });
 		server.log.info(`O servidor está rodando no endereço: ${address}`);
-	} catch (err) {
-		server.log.error(err);
+	} catch (e) {
+		if (e instanceof PrismaClientKnownRequestError) {
+			throw new PrismaError(e.message, 500, e.code, "Query Error");
+		}
+		server.log.error(e);
 		process.exit(1);
 	}
 };

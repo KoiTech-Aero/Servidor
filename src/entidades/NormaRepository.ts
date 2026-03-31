@@ -25,9 +25,30 @@ export interface CreateNormaResponse {
 	id: string;
 }
 
+export interface ReadNormaProps {
+	conditions?: {
+		status: string;
+	};
+	fastify: FastifyInstance;
+}
+export interface ReadNormaResponse {
+	id: string;
+	codigo: string;
+	titulo: string;
+	escopo: string;
+	area_tecnica: string;
+	orgao_emissor: string;
+	versaos: {
+		data_publicacao: Date;
+		status: boolean;
+	}[];
+}
+
 export interface NormaRepository {
 	create(
 		data: CreateNormaData,
 		fastify: FastifyInstance,
 	): Promise<CreateNormaResponse>;
+
+	read({ conditions, fastify }: ReadNormaProps): Promise<ReadNormaResponse[]>;
 }

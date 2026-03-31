@@ -1,4 +1,4 @@
-export class PrismaInsertError extends Error {
+export class PrismaError extends Error {
 	readonly typeError: string;
 	readonly codeError: string;
 	readonly responseStatusCode: number;
