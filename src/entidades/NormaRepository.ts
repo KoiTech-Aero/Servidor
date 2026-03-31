@@ -38,7 +38,7 @@ export interface ReadNormaResponse {
 	escopo: string;
 	area_tecnica: string;
 	orgao_emissor: string;
-	versaos: {
+	versoes: {
 		data_publicacao: Date;
 		status: boolean;
 	}[];
