@@ -2,8 +2,8 @@ services:
   db_tests:
     image: postgres:15
     restart: always
-    container_name: e2e-prisma-test
+    container_name: ${POSTGRES_DB}
     ports:
-      - "3023:3023"
+      - "${POSTGRES_PORT}:5432"
     env_file:
-      - ../.env.test
+      - ../.env.${ENV_FILE}

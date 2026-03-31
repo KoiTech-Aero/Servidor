@@ -1,8 +1,7 @@
-
 import "dotenv";
+import { spawn } from "node:child_process";
 import { configDotenv } from "dotenv";
 import inquirer from "inquirer";
-import { spawn } from "node:child_process";
 
 async function cli() {
 	const answers = await inquirer.prompt([
@@ -37,8 +36,11 @@ async function cli() {
 
 	const child = spawn("npm", ["run", answers.command], {
 		stdio: "inherit",
-		env: process.env,
-		shell:true
+		env: {
+			...process.env,
+			ENV_FILE: process.env.NODE_ENV,
+		},
+		shell: true,
 	});
 
 	child.on("exit", (code) => {
