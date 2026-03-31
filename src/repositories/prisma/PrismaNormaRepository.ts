@@ -14,7 +14,7 @@ export class PrismaNormaRepository implements NormaRepository {
 				escopo: norma.escopo,
 				area_tecnica: norma.area_tecnica,
 				orgao_emissor: norma.orgao_emissor,
-				versaos: {
+				versoes: {
 					create: {
 						versao_numero: versao.versao_numero,
 						descricao: versao.descricao,
@@ -38,7 +38,7 @@ export class PrismaNormaRepository implements NormaRepository {
 		const response = await fastify.prisma.norma.findMany({
 			...(boolStatus !== null && {
 				where: {
-					versaos: {
+					versoes: {
 						some: {
 							status: boolStatus
 						}
@@ -46,7 +46,7 @@ export class PrismaNormaRepository implements NormaRepository {
 				},
 			}),
 			include: {
-				versaos: {
+				versoes: {
 					select: {
 						data_publicacao: true,
 						status: true,
