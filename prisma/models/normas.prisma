@@ -8,7 +8,7 @@ model Norma {
 
   // Relacionamentos
   solicitacoes  Solicitacao[]
-  versaos       Versao[]
+  versoes       Versao[]
   tags          NormasTags[]
   referencias   NormaReferencia[] @relation("NormaReferencia")
   referenciadas NormaReferencia[] @relation("NormaReferenciada")

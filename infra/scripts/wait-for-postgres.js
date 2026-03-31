@@ -1,7 +1,10 @@
 import { exec } from "node:child_process";
 
 function checkPostgres() {
-	exec("docker exec e2e-prisma-test pg_isready --host localhost", handleReturn);
+	exec(
+		`docker exec ${process.env.POSTGRES_DB} pg_isready --host localhost`,
+		handleReturn,
+	);
 
 	function handleReturn(_error, stdout) {
 		if (stdout.search("accepting connections") === -1) {
