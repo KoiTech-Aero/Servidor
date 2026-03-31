@@ -1,4 +1,5 @@
 import Fastify, { type FastifyError } from "fastify";
+import cors from "@fastify/cors";
 import {
 	serializerCompiler,
 	validatorCompiler,
@@ -23,6 +24,7 @@ export async function buildServer(opts = {}) {
 		reply.code(200).send({ status: "OK" });
 	});
 
+	await fastify.register(cors)
 	await fastify.register(prismaPlugin);
 	await fastify.register(postNorma);
 	await fastify.register(getNorma);
