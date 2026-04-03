@@ -1,5 +1,5 @@
 import Fastify, { type FastifyError } from "fastify";
-import {cors} from "@fastify/cors"
+import cors from "@fastify/cors"
 import {
 	serializerCompiler,
 	validatorCompiler,
@@ -9,6 +9,7 @@ import prismaPlugin from "./plugin/db-connector.js";
 import { getNorma } from "./routes/get-norma.js";
 import { postNorma } from "./routes/post-norma.js";
 import { postVersao } from "./routes/post-versao.js";
+import { postRelacionarNorma } from "./routes/post-relacionar-norma.js";
 
 export async function buildServer(opts = {}) {
 	const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
@@ -29,7 +30,8 @@ export async function buildServer(opts = {}) {
 	await fastify.register(prismaPlugin);
 	await fastify.register(postNorma);
 	await fastify.register(getNorma);
-	await fastify.register(postVersao)
+	await fastify.register(postVersao);
+	await fastify.register(postRelacionarNorma);
 
 	return fastify;
 }
