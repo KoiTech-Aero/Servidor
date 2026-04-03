@@ -20,4 +20,14 @@ export interface NormaReferenciaRepository {
         data: AssociateNormaData,
         fastify: FastifyInstance
     ): Promise<AssociateNormaResponse>;
+
+    delete(
+        data: DeleteNormaReferenciaData,
+        fastify: FastifyInstance
+    ): Promise<void>;
+}
+
+export interface DeleteNormaReferenciaData {
+    id_norma_referencia: string;
+    id_norma_referenciada: string;
 }
