@@ -25,6 +25,7 @@ export class PrismaNormaReferenciaRepository
             observacao: response.observacao,
         };
     }
+
     async delete(
         data: DeleteNormaReferenciaData,
         fastify: FastifyInstance
@@ -37,5 +38,23 @@ export class PrismaNormaReferenciaRepository
                 },
             },
         });
+    }
+
+    async findByNorma(id: string, fastify: FastifyInstance) {
+        const referencias = await fastify.prisma.normaReferencia.findMany({
+            where: {
+                id_norma_referencia: id,
+            },
+            include: {
+                norma_referenciada: true,
+            },
+        });
+
+        return referencias.map((ref) => ({
+            id: ref.norma_referenciada.id,
+            titulo: ref.norma_referenciada.titulo,
+            codigo: ref.norma_referenciada.codigo,
+            observacao: ref.observacao,
+        }));
     }
 }

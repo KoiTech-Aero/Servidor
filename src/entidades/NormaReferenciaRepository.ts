@@ -25,9 +25,21 @@ export interface NormaReferenciaRepository {
         data: DeleteNormaReferenciaData,
         fastify: FastifyInstance
     ): Promise<void>;
+
+    findByNorma(
+        id: string,
+        fastify: FastifyInstance
+    ): Promise<NormaReferenciada[]>;
 }
 
 export interface DeleteNormaReferenciaData {
     id_norma_referencia: string;
     id_norma_referenciada: string;
+}
+
+export interface NormaReferenciada {
+    id: string;
+    titulo: string;
+    codigo: string;
+    observacao?: string;
 }
