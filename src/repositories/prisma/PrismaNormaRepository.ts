@@ -48,8 +48,11 @@ export class PrismaNormaRepository implements NormaRepository {
 			include: {
 				versoes: {
 					select: {
-						data_publicacao: true,
-						status: true,
+						versao_numero: true,
+                        descricao: true,
+                        data_publicacao: true,
+                        path_file: true,
+                        status: true,
 					},
 				},
 			},
