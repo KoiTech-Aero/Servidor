@@ -45,6 +45,12 @@ export class PrismaVersaoRepository implements VersaoRepository {
       }),
     ]);
 
-    return { versao_numero: newVersao.versao_numero };
+    return {
+      versao_numero: newVersao.versao_numero,
+      descricao: newVersao.descricao,
+      data_publicacao: newVersao.data_publicacao.toISOString(),
+      path_file: newVersao.path_file,
+      id_norma: newVersao.id_norma,
+    };
   }
 }
