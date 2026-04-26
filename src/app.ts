@@ -20,6 +20,8 @@ import { putUsuario } from "./routes/put-usuario.js";
 import { patchUsuario } from "./routes/patch-usuario.js";
 
 
+import { postSolicitacao } from "./routes/post-solicitar-norma.js";
+import { getSolicitacao } from "./routes/get-solicitacao.js";
 
 export async function buildServer(opts = {}) {
   const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
@@ -56,6 +58,8 @@ export async function buildServer(opts = {}) {
   await fastify.register(getUsuarios);
   await fastify.register(putUsuario);
   await fastify.register(patchUsuario);
+  await fastify.register(postSolicitacao);
+  await fastify.register(getSolicitacao);
 
   return fastify;
 }

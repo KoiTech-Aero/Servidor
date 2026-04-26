@@ -7,7 +7,6 @@ model Norma {
   orgao_emissor String @db.VarChar(50)
 
   // Relacionamentos
-  solicitacoes  Solicitacao[]
   versoes       Versao[]
   tags          NormasTags[]
   referencias   NormaReferencia[] @relation("NormaReferencia")
