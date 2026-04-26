@@ -28,7 +28,7 @@ export class PrismaSolicitacaoRepository implements SolicitacaoRepository {
       };
     }
 
-    const response = await fastify.prisma.solicitacao.create({
+    const response = await fastify.prisma.solicitacaoNorma.create({
       data: dataToCreate,
     });
 
@@ -42,7 +42,7 @@ export class PrismaSolicitacaoRepository implements SolicitacaoRepository {
     conditions,
     fastify,
   }: ReadSolicitacaoProps): Promise<ReadSolicitacaoResponse[]> {
-    const response = await fastify.prisma.solicitacao.findMany({
+    const response = await fastify.prisma.solicitacaoNorma.findMany({
       ...(conditions?.status && {
         where: {
           status: conditions.status,
