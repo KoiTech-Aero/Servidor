@@ -5,6 +5,8 @@ import type {
   UsuarioResponse,
   UpdateUsuarioData,
   UpdateUsuarioResponse,
+  PatchUsuarioData,
+  PatchUsuarioResponse,
 } from "../../entidades/UsuarioRepository.js";
 export class PrismaUsuarioRepository
   implements UsuarioRepository {
@@ -30,7 +32,7 @@ export class PrismaUsuarioRepository
     data: UpdateUsuarioData,
     fastify: FastifyInstance
   ): Promise<UpdateUsuarioResponse> {
-
+  
     const usuario =
       await fastify.prisma.usuario.update({
         where: {
@@ -53,4 +55,33 @@ export class PrismaUsuarioRepository
     };
   }
 
+  async patch(
+    id: string,
+    data: PatchUsuarioData,
+    fastify: FastifyInstance
+  ): Promise<PatchUsuarioResponse> {
+
+  const usuario =
+    await fastify.prisma.usuario.update({
+      where: {
+        id: id,
+      },
+
+      data: {
+        ...(data.nome !== undefined && { nome: data.nome }),
+        ...(data.email !== undefined && { email: data.email }),
+        ...(data.role !== undefined && { role: data.role }),
+        ...(data.status !== undefined && { status: data.status }),
+      },
+
+    });
+
+  return {
+    id: usuario.id,
+    nome: usuario.nome,
+    email: usuario.email,
+    role: usuario.role,
+    status: usuario.status,
+  };
+ }
 }

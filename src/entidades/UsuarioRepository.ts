@@ -25,7 +25,29 @@ export interface UpdateUsuarioResponse {
   status: boolean;
 }
 
+export const PatchUsuarioSchema = z.object({
+  nome: z.string().optional(),
+  email: z.string().email().optional(),
+  role: z.enum(["Engenheiro", "Gestor"]).optional(),
+  status: z.boolean().optional(),
+});
+
+export type PatchUsuarioData =
+  z.infer<typeof PatchUsuarioSchema>;
+
+export interface PatchUsuarioResponse {
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor";
+  status: boolean;
+}
 export interface UsuarioRepository {
+  patch(
+    id: string,
+    data: PatchUsuarioData,
+    fastify: FastifyInstance
+  ): Promise<PatchUsuarioResponse>;
 
   read(
     fastify: FastifyInstance
