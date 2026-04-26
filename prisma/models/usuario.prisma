@@ -11,5 +11,5 @@ model Usuario {
   role          Role         @default(Engenheiro)
   status        Boolean      @db.Boolean
   data_cadastro DateTime     @db.Date
-  solicitacoes   Solicitacao[]
+  solicitacoes   SolicitacaoNorma[]
 }
