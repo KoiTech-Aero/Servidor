@@ -16,6 +16,9 @@ import { postRelacionarNorma } from "./routes/post-relacionar-norma.js";
 import { deleteRelacionarNorma } from "./routes/delete-relacionar-norma.js";
 import { getRelacionarNorma } from "./routes/get-relacionar-norma.js";
 import { getUsuarios } from "./routes/get-usuarios.js";
+import { putUsuario } from "./routes/put-usuario.js";
+import { patchUsuario } from "./routes/patch-usuario.js";
+
 
 import { postSolicitacao } from "./routes/post-solicitar-norma.js";
 import { getSolicitacao } from "./routes/get-solicitacao.js";
@@ -53,6 +56,8 @@ export async function buildServer(opts = {}) {
   await fastify.register(deleteRelacionarNorma);
   await fastify.register(getRelacionarNorma);
   await fastify.register(getUsuarios);
+  await fastify.register(putUsuario);
+  await fastify.register(patchUsuario);
   await fastify.register(postSolicitacao);
   await fastify.register(getSolicitacao);
 

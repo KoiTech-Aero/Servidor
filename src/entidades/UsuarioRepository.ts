@@ -1,13 +1,62 @@
 import type { FastifyInstance } from "fastify";
+import z from "zod";
 
 export interface UsuarioResponse {
-    id: string;
-    nome: string;
-    email: string;
+  id: string;
+  nome: string;
+  email: string;
 }
 
+export const UpdateUsuarioSchema = z.object({
+  nome: z.string(),
+  email: z.string().email(),
+  role: z.enum(["Engenheiro", "Gestor"]),
+  status: z.boolean(),
+});
+
+export type UpdateUsuarioData =
+  z.infer<typeof UpdateUsuarioSchema>;
+
+export interface UpdateUsuarioResponse {
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor";
+  status: boolean;
+}
+
+export const PatchUsuarioSchema = z.object({
+  nome: z.string().optional(),
+  email: z.string().email().optional(),
+  role: z.enum(["Engenheiro", "Gestor"]).optional(),
+  status: z.boolean().optional(),
+});
+
+export type PatchUsuarioData =
+  z.infer<typeof PatchUsuarioSchema>;
+
+export interface PatchUsuarioResponse {
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor";
+  status: boolean;
+}
 export interface UsuarioRepository {
-    read(
-        fastify: FastifyInstance
-    ): Promise<UsuarioResponse[]>;
+  patch(
+    id: string,
+    data: PatchUsuarioData,
+    fastify: FastifyInstance
+  ): Promise<PatchUsuarioResponse>;
+
+  read(
+    fastify: FastifyInstance
+  ): Promise<UsuarioResponse[]>;
+
+  update(
+    id: string,
+    data: UpdateUsuarioData,
+    fastify: FastifyInstance
+  ): Promise<UpdateUsuarioResponse>;
+
 }
