@@ -17,6 +17,8 @@ import { deleteRelacionarNorma } from "./routes/delete-relacionar-norma.js";
 import { getRelacionarNorma } from "./routes/get-relacionar-norma.js";
 import { getUsuarios } from "./routes/get-usuarios.js";
 
+import { postSolicitacao } from "./routes/post-solicitar-norma.js";
+import { getSolicitacao } from "./routes/get-solicitacao.js";
 
 export async function buildServer(opts = {}) {
   const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
@@ -51,6 +53,8 @@ export async function buildServer(opts = {}) {
   await fastify.register(deleteRelacionarNorma);
   await fastify.register(getRelacionarNorma);
   await fastify.register(getUsuarios);
+  await fastify.register(postSolicitacao);
+  await fastify.register(getSolicitacao);
 
   return fastify;
 }
