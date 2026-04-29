@@ -7,9 +7,37 @@ import type {
   UpdateUsuarioResponse,
   PatchUsuarioData,
   PatchUsuarioResponse,
+  CreateUsuarioData,
+  CreateUsuarioResponse,
+  GetUsuarioResponse,
 } from "../../entidades/UsuarioRepository.js";
 export class PrismaUsuarioRepository
   implements UsuarioRepository {
+
+    async create(
+  data: CreateUsuarioData,
+  fastify: FastifyInstance
+): Promise<CreateUsuarioResponse> {
+  const usuario = await fastify.prisma.usuario.create({
+    data: {
+      nome: data.nome,
+      email: data.email,
+      role: data.role,
+      status: data.status,
+      senha: data.senha,
+      data_cadastro: new Date(),
+    },
+    select: {
+      id: true,
+      nome: true,
+      email: true,
+      role: true,
+      status: true,
+    },
+  });
+
+  return usuario;
+}
 
   async read(
     fastify: FastifyInstance
@@ -84,4 +112,39 @@ export class PrismaUsuarioRepository
     status: usuario.status,
   };
  }
+
+ async findByEmail(
+  email: string,
+  fastify: FastifyInstance
+): Promise<UsuarioResponse | null> {
+  const usuario = await fastify.prisma.usuario.findUnique({
+    where: { email },
+    select: {
+      id: true,
+      nome: true,
+      email: true,
+    },
+  });
+
+  return usuario;
+}
+
+async findById(
+  id: string,
+  fastify: FastifyInstance
+): Promise<GetUsuarioResponse | null> {
+  const usuario = await fastify.prisma.usuario.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      nome: true,
+      email: true,
+      role: true,
+      status: true,
+    },
+  });
+
+  return usuario;
+}
+
 }
