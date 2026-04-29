@@ -7,6 +7,24 @@ export interface UsuarioResponse {
   email: string;
 }
 
+export const CreateUsuarioSchema = z.object({
+  nome: z.string(),
+  email: z.string().email(),
+  role: z.enum(["Engenheiro", "Gestor"]),
+  status: z.boolean(),
+  senha: z.string(),
+});
+
+export type CreateUsuarioData = z.infer<typeof CreateUsuarioSchema>;
+
+export interface CreateUsuarioResponse {
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor";
+  status: boolean;
+}
+
 export const UpdateUsuarioSchema = z.object({
   nome: z.string(),
   email: z.string().email(),
@@ -42,7 +60,21 @@ export interface PatchUsuarioResponse {
   role: "Engenheiro" | "Gestor";
   status: boolean;
 }
+
+export interface GetUsuarioResponse {
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor";
+  status: boolean;
+}
+
 export interface UsuarioRepository {
+  create(
+  data: CreateUsuarioData,
+  fastify: FastifyInstance
+): Promise<CreateUsuarioResponse>;
+
   patch(
     id: string,
     data: PatchUsuarioData,
@@ -58,5 +90,15 @@ export interface UsuarioRepository {
     data: UpdateUsuarioData,
     fastify: FastifyInstance
   ): Promise<UpdateUsuarioResponse>;
+
+    findByEmail(
+    email: string,
+    fastify: FastifyInstance
+  ): Promise<UsuarioResponse | null>;
+
+  findById(
+  id: string,
+  fastify: FastifyInstance
+): Promise<GetUsuarioResponse | null>;
 
 }

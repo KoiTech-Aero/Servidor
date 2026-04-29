@@ -18,6 +18,7 @@ import { getRelacionarNorma } from "./routes/get-relacionar-norma.js";
 import { getUsuarios } from "./routes/get-usuarios.js";
 import { putUsuario } from "./routes/put-usuario.js";
 import { patchUsuario } from "./routes/patch-usuario.js";
+import { getUsuario } from "./routes/get-usuarioID.js";
 
 
 import { postSolicitacao } from "./routes/post-solicitar-norma.js";
@@ -60,6 +61,7 @@ export async function buildServer(opts = {}) {
   await fastify.register(patchUsuario);
   await fastify.register(postSolicitacao);
   await fastify.register(getSolicitacao);
+  await fastify.register(getUsuario);
 
   return fastify;
 }
