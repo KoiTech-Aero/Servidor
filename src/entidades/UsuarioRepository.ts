@@ -20,7 +20,7 @@ export interface UpdateUsuarioResponse {
 	id: string;
 	nome: string;
 	email: string;
-	role: "Engenheiro" | "Gestor";
+	role: "Engenheiro" | "Gestor" | "Vizualizador";
 	status: boolean;
 }
 
@@ -37,14 +37,14 @@ export interface PatchUsuarioResponse {
 	id: string;
 	nome: string;
 	email: string;
-	role: "Engenheiro" | "Gestor";
+	role: "Engenheiro" | "Gestor" | "Vizualizador";
 	status: boolean;
 }
 export interface UsuarioCreateData {
 	nome: string;
 	email: string;
 	senha: string;
-	role: "Engenheiro" | "Gestor";
+	role: "Engenheiro" | "Gestor" | "Vizualizador";
 	status: boolean;
 }
 export interface UsuarioCreateResponse {

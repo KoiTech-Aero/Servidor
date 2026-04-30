@@ -8,7 +8,7 @@ const bodySchema = z.object({
 	nome: z.string(),
 	email: z.email(),
 	senha: z.string(),
-	role: z.enum(["Engenheiro", "Gestor"]),
+	role: z.enum(["Engenheiro", "Gestor", "Vizualizador"]),
 	status: z.coerce.boolean(),
 });
 

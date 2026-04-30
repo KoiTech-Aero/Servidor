@@ -10,7 +10,7 @@ interface CreateUsuarioRequest {
 	nome: string;
 	email: string;
 	senha: string;
-	role: "Engenheiro" | "Gestor";
+	role: "Engenheiro" | "Gestor" | "Vizualizador";
 	status: boolean;
 }
 
