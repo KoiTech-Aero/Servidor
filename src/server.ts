@@ -19,7 +19,12 @@ const start = async () => {
 		server.log.info(`O servidor está rodando no endereço: ${address}`);
 	} catch (e) {
 		if (e instanceof PrismaClientKnownRequestError) {
-			throw new PrismaError(e.message, 500, e.code, "Query Error");
+			throw new PrismaError(
+				"Não foi possivel conectar ao banco",
+				500,
+				e.code,
+				"Query Error",
+			);
 		}
 		server.log.error(e);
 		process.exit(1);
