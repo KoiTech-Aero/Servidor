@@ -18,7 +18,7 @@ import { patchUsuario } from "./routes/patch-usuario.js";
 import { postNorma } from "./routes/post-norma.js";
 import { postRelacionarNorma } from "./routes/post-relacionar-norma.js";
 import { postSolicitacao } from "./routes/post-solicitar-norma.js";
-import { getSolicitacao } from "./routes/get-solicitacao.js";
+import { PostUsuario } from "./routes/post-usuario.js";
 import { postVersao } from "./routes/post-versao.js";
 import { putUsuario } from "./routes/put-usuario.js";
 
@@ -57,12 +57,13 @@ export async function buildServer(opts = {}) {
 	await fastify.register(postNorma);
 	await fastify.register(getNorma);
 	await fastify.register(postVersao);
-  await fastify.register(postRelacionarNorma);
-  await fastify.register(deleteRelacionarNorma);
-  await fastify.register(getRelacionarNorma);
-  await fastify.register(getUsuarios);
-  await fastify.register(putUsuario);
-  await fastify.register(patchUsuario);
+	await fastify.register(postRelacionarNorma);
+	await fastify.register(deleteRelacionarNorma);
+	await fastify.register(getRelacionarNorma);
+	await fastify.register(PostUsuario);
+	await fastify.register(getUsuarios);
+	await fastify.register(putUsuario);
+	await fastify.register(patchUsuario);
 	await fastify.register(postSolicitacao);
 	await fastify.register(getSolicitacao);
 
