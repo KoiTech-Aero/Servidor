@@ -8,21 +8,21 @@ export interface UsuarioResponse {
 }
 
 export const CreateUsuarioSchema = z.object({
-  nome: z.string(),
-  email: z.string().email(),
-  role: z.enum(["Engenheiro", "Gestor"]),
-  status: z.boolean(),
-  senha: z.string(),
+	nome: z.string(),
+	email: z.string().email(),
+	role: z.enum(["Engenheiro", "Gestor"]),
+	status: z.boolean(),
+	senha: z.string(),
 });
 
 export type CreateUsuarioData = z.infer<typeof CreateUsuarioSchema>;
 
 export interface CreateUsuarioResponse {
-  id: string;
-  nome: string;
-  email: string;
-  role: "Engenheiro" | "Gestor";
-  status: boolean;
+	id: string;
+	nome: string;
+	email: string;
+	role: "Engenheiro" | "Gestor";
+	status: boolean;
 }
 
 export const UpdateUsuarioSchema = z.object({
@@ -70,11 +70,11 @@ export interface UsuarioCreateResponse {
 }
 
 export interface GetUsuarioResponse {
-  id: string;
-  nome: string;
-  email: string;
-  role: "Engenheiro" | "Gestor";
-  status: boolean;
+	id: string;
+	nome: string;
+	email: string;
+	role: "Engenheiro" | "Gestor" | "Vizualizador";
+	status: boolean;
 }
 
 export interface UsuarioRepository {
@@ -83,30 +83,27 @@ export interface UsuarioRepository {
 		fastify: FastifyInstance,
 	): Promise<UsuarioCreateResponse>;
 
-  patch(
-    id: string,
-    data: PatchUsuarioData,
-    fastify: FastifyInstance
-  ): Promise<PatchUsuarioResponse>;
+	patch(
+		id: string,
+		data: PatchUsuarioData,
+		fastify: FastifyInstance,
+	): Promise<PatchUsuarioResponse>;
 
-  read(
-    fastify: FastifyInstance
-  ): Promise<UsuarioResponse[]>;
+	read(fastify: FastifyInstance): Promise<UsuarioResponse[]>;
 
-  update(
-    id: string,
-    data: UpdateUsuarioData,
-    fastify: FastifyInstance
-  ): Promise<UpdateUsuarioResponse>;
+	update(
+		id: string,
+		data: UpdateUsuarioData,
+		fastify: FastifyInstance,
+	): Promise<UpdateUsuarioResponse>;
 
-    findByEmail(
-    email: string,
-    fastify: FastifyInstance
-  ): Promise<UsuarioResponse | null>;
+	findByEmail(
+		email: string,
+		fastify: FastifyInstance,
+	): Promise<UsuarioResponse | null>;
 
-  findById(
-  id: string,
-  fastify: FastifyInstance
-): Promise<GetUsuarioResponse | null>;
-
+	findById(
+		id: string,
+		fastify: FastifyInstance,
+	): Promise<GetUsuarioResponse | null>;
 }
