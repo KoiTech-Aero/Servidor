@@ -1,0 +1,27 @@
+name: Update Submodulo
+on: 
+  repository_dispatch:
+    types: [update_submodule]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.PAT_DISPATCH  }}
+
+      - name: Configurar Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@koitech.com"
+
+      - name: Atualizar submodulo
+        run: |
+          git pull
+          git submodule update --remote
+          git add docs
+          git commit -m "chore: atualização do submodulo `docs`"
+          git push https://KoiTech-Aero:${{ secrets.PAT_DISPATCH }}@github.com/KoiTech-Aero/Servidor.git
