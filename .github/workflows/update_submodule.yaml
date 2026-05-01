@@ -2,26 +2,38 @@ name: Update Submodulo
 on: 
   repository_dispatch:
     types: [update_submodule]
+  
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
           token: ${{ secrets.PAT_DISPATCH  }}
-
-      - name: Configurar Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@koitech.com"
+          persist-credentials: true
 
       - name: Atualizar submodulo
         run: |
-          git pull
           git submodule update --remote
           git add Documentos
-          git commit -m "chore: atualização do submodulo `Documentos`"
-          git push https://KoiTech-Aero:${{ secrets.PAT_DISPATCH }}@github.com/KoiTech-Aero/Servidor.git
+
+      
+      - name: Criar Pull Request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          title: Atualização do Submodule
+          body: "Esse PR foi criado automaticamente para atualizar o submodule `Documentos`"
+          base: main
+          branch: update/submodule
+          author: "github-actions <actions@github.com>"
+          committer: "github-actions <actions@github.com>"
+          token: ${{ secrets.PAT_DISPATCH }}
+          add-paths: |
+            Documentos
+          delete-branch: true
