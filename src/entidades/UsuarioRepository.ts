@@ -17,21 +17,21 @@ export interface UsuarioResponse {
 }
 
 export const CreateUsuarioSchema = z.object({
-  nome: z.string(),
-  email: z.string().email(),
-  role: z.enum(["Engenheiro", "Gestor"]),
-  status: z.boolean(),
-  senha: z.string(),
+	nome: z.string(),
+	email: z.string().email(),
+	role: z.enum(["Engenheiro", "Gestor"]),
+	status: z.boolean(),
+	senha: z.string(),
 });
 
 export type CreateUsuarioData = z.infer<typeof CreateUsuarioSchema>;
 
 export interface CreateUsuarioResponse {
-  id: string;
-  nome: string;
-  email: string;
-  role: "Engenheiro" | "Gestor";
-  status: boolean;
+	id: string;
+	nome: string;
+	email: string;
+	role: "Engenheiro" | "Gestor";
+	status: boolean;
 }
 
 export const UpdateUsuarioSchema = z.object({
@@ -79,11 +79,19 @@ export interface UsuarioCreateResponse {
 }
 
 export interface GetUsuarioResponse {
+<<<<<<< feature-login
   id: string;
   nome: string;
   email: string;
   role: "Engenheiro" | "Gestor" | "Vizualizador";
   status: boolean;
+=======
+	id: string;
+	nome: string;
+	email: string;
+	role: "Engenheiro" | "Gestor" | "Vizualizador";
+	status: boolean;
+>>>>>>> main
 }
 
 export interface UsuarioRepository {
@@ -92,6 +100,7 @@ export interface UsuarioRepository {
     fastify: FastifyInstance,
   ): Promise<UsuarioCreateResponse>;
 
+<<<<<<< feature-login
   patch(
     id: string,
     data: PatchUsuarioData,
@@ -115,4 +124,29 @@ export interface UsuarioRepository {
     id: string,
     fastify: FastifyInstance,
   ): Promise<GetUsuarioResponse | null>;
+=======
+	patch(
+		id: string,
+		data: PatchUsuarioData,
+		fastify: FastifyInstance,
+	): Promise<PatchUsuarioResponse>;
+
+	read(fastify: FastifyInstance): Promise<UsuarioResponse[]>;
+
+	update(
+		id: string,
+		data: UpdateUsuarioData,
+		fastify: FastifyInstance,
+	): Promise<UpdateUsuarioResponse>;
+
+	findByEmail(
+		email: string,
+		fastify: FastifyInstance,
+	): Promise<UsuarioResponse | null>;
+
+	findById(
+		id: string,
+		fastify: FastifyInstance,
+	): Promise<GetUsuarioResponse | null>;
+>>>>>>> main
 }
