@@ -1,7 +1,7 @@
 enum Role {
   Engenheiro
   Gestor
-  Vizualizador
+  Visualizador
 }
 
 model Usuario {
