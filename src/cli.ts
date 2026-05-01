@@ -39,6 +39,8 @@ async function cli() {
 		env: {
 			...process.env,
 			ENV_FILE: process.env.NODE_ENV,
+			POSTGRES_DB: process.env.POSTGRES_DB,
+			POSTGRES_PORT: process.env.POSTGRES_PORT,
 		},
 		shell: true,
 	});

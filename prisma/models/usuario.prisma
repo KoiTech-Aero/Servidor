@@ -1,15 +1,16 @@
 enum Role {
   Engenheiro
   Gestor
+  Vizualizador
 }
 
 model Usuario {
-  id            String       @id @default(uuid())
-  nome          String       @db.VarChar(150)
-  email         String       @unique @db.VarChar(255)
-  senha         String       @db.Text
-  role          Role         @default(Engenheiro)
-  status        Boolean      @db.Boolean
-  data_cadastro DateTime     @db.Date
-  solicitacoes   SolicitacaoNorma[]
+  id            String             @id @default(uuid())
+  nome          String             @db.VarChar(150)
+  email         String             @unique @db.VarChar(255)
+  senha         String             @db.Text
+  role          Role               @default(Engenheiro)
+  status        Boolean            @db.Boolean
+  data_cadastro DateTime           @db.Date
+  solicitacoes  SolicitacaoNorma[]
 }

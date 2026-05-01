@@ -1,4 +1,7 @@
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
+import {
+	PrismaClientKnownRequestError,
+	PrismaClientValidationError,
+} from "@prisma/client/runtime/client";
 import type { FastifyInstance } from "fastify";
 import z from "zod";
 import type { NormaRepository } from "../entidades/NormaRepository.js";
@@ -45,6 +48,19 @@ export class CreateNorma {
 						e.cause,
 					);
 				}
+			}
+			if (e instanceof PrismaClientValidationError) {
+				throw new PrismaError(
+					e.message,
+					409,
+					"Undefined",
+					"Params Error",
+					e.cause,
+				);
+			}
+
+			if (e instanceof Error) {
+				throw new Error(e.message);
 			}
 		}
 	}

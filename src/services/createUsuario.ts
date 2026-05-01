@@ -1,40 +1,55 @@
-import { PrismaError } from "../entidades/prismaError.js";
-import { PrismaClientInitializationError } from "@prisma/client/runtime/wasm-compiler-edge";
+import {
+	PrismaClientKnownRequestError,
+	PrismaClientValidationError,
+} from "@prisma/client/runtime/wasm-compiler-edge";
 import type { FastifyInstance } from "fastify";
-import type { UsuarioRepository, CreateUsuarioData } from "../entidades/UsuarioRepository.js";
-export class CreateUsuario {
-  constructor(
-    private usuarioRepository: UsuarioRepository,
-    private fastify: FastifyInstance
-  ) {}
+import { PrismaError } from "../entidades/prismaError.js";
+import type { UsuarioRepository } from "../entidades/UsuarioRepository.js";
 
-  async execute(data: CreateUsuarioData) {
-    try {
-      // ✅ Validação: usuário já existe?
-      const usuarioExistente = await this.usuarioRepository.findByEmail(
-        data.email,
-        this.fastify
-      );
+interface CreateUsuarioRequest {
+	nome: string;
+	email: string;
+	senha: string;
+	role: "Engenheiro" | "Gestor" | "Vizualizador";
+	status: boolean;
+}
 
-      if (usuarioExistente) {
-        throw new PrismaError(
-          "Usuário com esse e-mail já está cadastrado.",
-          409,
-          "CONFLICT",
-          "Conflict"
-        );
-      }
+export class createUsuario {
+	constructor(
+		private repo: UsuarioRepository,
+		private fastify: FastifyInstance,
+	) {}
 
-      // Prossegue com a criação...
-      return await this.usuarioRepository.create(data, this.fastify);
+	async execute(data: CreateUsuarioRequest) {
+		try {
+			const usuario = this.repo.create(data, this.fastify);
 
-    } catch (e) {
-      if (e instanceof PrismaClientInitializationError) {
-        throw new PrismaError(e.message, 500, e.errorCode || "1", "Server Error");
-      }
-      if (e instanceof Error) {
-        throw new Error(e.message);
-      }
-    }
-  }
+			return usuario;
+		} catch (e) {
+			if (e instanceof PrismaClientKnownRequestError) {
+				if (e.code === "P2002") {
+					throw new PrismaError(
+						`Violação de constraint unica. Uma norma não pode ser criada com esse código (${data.email})`,
+						409,
+						e.code,
+						"Insert Error",
+						e.cause,
+					);
+				}
+			}
+			if (e instanceof PrismaClientValidationError) {
+				throw new PrismaError(
+					e.message,
+					409,
+					"Undefined",
+					"Params Error",
+					e.cause,
+				);
+			}
+
+			if (e instanceof Error) {
+				throw new Error(e.message);
+			}
+		}
+	}
 }
