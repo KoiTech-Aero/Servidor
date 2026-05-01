@@ -22,6 +22,6 @@ jobs:
         run: |
           git pull
           git submodule update --remote
-          git add docs
-          git commit -m "chore: atualização do submodulo `docs`"
+          git add Documentos
+          git commit -m "chore: atualização do submodulo `Documentos`"
           git push https://KoiTech-Aero:${{ secrets.PAT_DISPATCH }}@github.com/KoiTech-Aero/Servidor.git
