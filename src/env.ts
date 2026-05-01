@@ -14,6 +14,7 @@ const envSchema = z.object({
 	POSTGRES_PASSWORD: z.string().nullable(),
 	DATABASE_URL: z.url().refine((url) => url.startsWith("postgresql://")),
 	SERVER_PORT: z.coerce.number(),
+	JWT_SECRET: z.string(),
 });
 
 export const env = envSchema.parse(process.env);

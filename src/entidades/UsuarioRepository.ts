@@ -1,10 +1,19 @@
 import type { FastifyInstance } from "fastify";
 import z from "zod";
 
+export interface UsuarioAuth {
+  id: string;
+  nome: string;
+  email: string;
+  senha: string;
+  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  status: boolean;
+}
+
 export interface UsuarioResponse {
-	id: string;
-	nome: string;
-	email: string;
+  id: string;
+  nome: string;
+  email: string;
 }
 
 export const CreateUsuarioSchema = z.object({
@@ -26,63 +35,96 @@ export interface CreateUsuarioResponse {
 }
 
 export const UpdateUsuarioSchema = z.object({
-	nome: z.string(),
-	email: z.string().email(),
-	role: z.enum(["Engenheiro", "Gestor"]),
-	status: z.boolean(),
+  nome: z.string(),
+  email: z.string().email(),
+  role: z.enum(["Engenheiro", "Gestor"]),
+  status: z.boolean(),
 });
 
 export type UpdateUsuarioData = z.infer<typeof UpdateUsuarioSchema>;
 
 export interface UpdateUsuarioResponse {
-	id: string;
-	nome: string;
-	email: string;
-	role: "Engenheiro" | "Gestor" | "Vizualizador";
-	status: boolean;
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  status: boolean;
 }
 
 export const PatchUsuarioSchema = z.object({
-	nome: z.string().optional(),
-	email: z.string().email().optional(),
-	role: z.enum(["Engenheiro", "Gestor"]).optional(),
-	status: z.boolean().optional(),
+  nome: z.string().optional(),
+  email: z.string().email().optional(),
+  role: z.enum(["Engenheiro", "Gestor"]).optional(),
+  status: z.boolean().optional(),
 });
 
 export type PatchUsuarioData = z.infer<typeof PatchUsuarioSchema>;
 
 export interface PatchUsuarioResponse {
-	id: string;
-	nome: string;
-	email: string;
-	role: "Engenheiro" | "Gestor" | "Vizualizador";
-	status: boolean;
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  status: boolean;
 }
 export interface UsuarioCreateData {
-	nome: string;
-	email: string;
-	senha: string;
-	role: "Engenheiro" | "Gestor" | "Vizualizador";
-	status: boolean;
+  nome: string;
+  email: string;
+  senha: string;
+  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  status: boolean;
 }
 export interface UsuarioCreateResponse {
-	id: string;
+  id: string;
 }
 
 export interface GetUsuarioResponse {
+<<<<<<< feature-login
+  id: string;
+  nome: string;
+  email: string;
+  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  status: boolean;
+=======
 	id: string;
 	nome: string;
 	email: string;
 	role: "Engenheiro" | "Gestor" | "Vizualizador";
 	status: boolean;
+>>>>>>> main
 }
 
 export interface UsuarioRepository {
-	create(
-		data: UsuarioCreateData,
-		fastify: FastifyInstance,
-	): Promise<UsuarioCreateResponse>;
+  create(
+    data: UsuarioCreateData,
+    fastify: FastifyInstance,
+  ): Promise<UsuarioCreateResponse>;
 
+<<<<<<< feature-login
+  patch(
+    id: string,
+    data: PatchUsuarioData,
+    fastify: FastifyInstance,
+  ): Promise<PatchUsuarioResponse>;
+
+  read(fastify: FastifyInstance): Promise<UsuarioResponse[]>;
+
+  update(
+    id: string,
+    data: UpdateUsuarioData,
+    fastify: FastifyInstance,
+  ): Promise<UpdateUsuarioResponse>;
+
+  findByEmail(
+    email: string,
+    fastify: FastifyInstance,
+  ): Promise<UsuarioAuth | null>;
+
+  findById(
+    id: string,
+    fastify: FastifyInstance,
+  ): Promise<GetUsuarioResponse | null>;
+=======
 	patch(
 		id: string,
 		data: PatchUsuarioData,
@@ -106,4 +148,5 @@ export interface UsuarioRepository {
 		id: string,
 		fastify: FastifyInstance,
 	): Promise<GetUsuarioResponse | null>;
+>>>>>>> main
 }

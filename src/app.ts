@@ -24,6 +24,8 @@ import { PostUsuario } from "./routes/post-usuario.js";
 import { postVersao } from "./routes/post-versao.js";
 import { putUsuario } from "./routes/put-usuario.js";
 
+import { postLogin } from "./routes/post-login.js";
+
 export async function buildServer(opts = {}) {
 	const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
 	fastify.setValidatorCompiler(validatorCompiler);
@@ -69,6 +71,7 @@ export async function buildServer(opts = {}) {
 	await fastify.register(postSolicitacao);
 	await fastify.register(getSolicitacao);
 	await fastify.register(getUsuario);
+	await fastify.register(postLogin);
 
 	return fastify;
 }
