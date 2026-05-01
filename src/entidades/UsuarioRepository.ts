@@ -6,7 +6,7 @@ export interface UsuarioAuth {
   nome: string;
   email: string;
   senha: string;
-  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  role: "Engenheiro" | "Gestor" | "Visualizador";
   status: boolean;
 }
 
@@ -19,7 +19,7 @@ export interface UsuarioResponse {
 export const CreateUsuarioSchema = z.object({
 	nome: z.string(),
 	email: z.string().email(),
-	role: z.enum(["Engenheiro", "Gestor"]),
+	role: z.enum(["Engenheiro", "Gestor", "Visualizador"]),
 	status: z.boolean(),
 	senha: z.string(),
 });
@@ -30,14 +30,14 @@ export interface CreateUsuarioResponse {
 	id: string;
 	nome: string;
 	email: string;
-	role: "Engenheiro" | "Gestor";
+	role: "Engenheiro" | "Gestor" | "Visualizador";
 	status: boolean;
 }
 
 export const UpdateUsuarioSchema = z.object({
   nome: z.string(),
   email: z.string().email(),
-  role: z.enum(["Engenheiro", "Gestor"]),
+  role: z.enum(["Engenheiro", "Gestor", "Visualizador"]),
   status: z.boolean(),
 });
 
@@ -47,7 +47,7 @@ export interface UpdateUsuarioResponse {
   id: string;
   nome: string;
   email: string;
-  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  role: "Engenheiro" | "Gestor" | "Visualizador";
   status: boolean;
 }
 
@@ -64,14 +64,14 @@ export interface PatchUsuarioResponse {
   id: string;
   nome: string;
   email: string;
-  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  role: "Engenheiro" | "Gestor" | "Visualizador";
   status: boolean;
 }
 export interface UsuarioCreateData {
   nome: string;
   email: string;
   senha: string;
-  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  role: "Engenheiro" | "Gestor" | "Visualizador";
   status: boolean;
 }
 export interface UsuarioCreateResponse {
@@ -79,19 +79,11 @@ export interface UsuarioCreateResponse {
 }
 
 export interface GetUsuarioResponse {
-<<<<<<< feature-login
-  id: string;
-  nome: string;
-  email: string;
-  role: "Engenheiro" | "Gestor" | "Vizualizador";
-  status: boolean;
-=======
 	id: string;
 	nome: string;
 	email: string;
-	role: "Engenheiro" | "Gestor" | "Vizualizador";
+	role: "Engenheiro" | "Gestor" | "Visualizador";
 	status: boolean;
->>>>>>> main
 }
 
 export interface UsuarioRepository {
@@ -100,7 +92,6 @@ export interface UsuarioRepository {
     fastify: FastifyInstance,
   ): Promise<UsuarioCreateResponse>;
 
-<<<<<<< feature-login
   patch(
     id: string,
     data: PatchUsuarioData,
@@ -124,29 +115,4 @@ export interface UsuarioRepository {
     id: string,
     fastify: FastifyInstance,
   ): Promise<GetUsuarioResponse | null>;
-=======
-	patch(
-		id: string,
-		data: PatchUsuarioData,
-		fastify: FastifyInstance,
-	): Promise<PatchUsuarioResponse>;
-
-	read(fastify: FastifyInstance): Promise<UsuarioResponse[]>;
-
-	update(
-		id: string,
-		data: UpdateUsuarioData,
-		fastify: FastifyInstance,
-	): Promise<UpdateUsuarioResponse>;
-
-	findByEmail(
-		email: string,
-		fastify: FastifyInstance,
-	): Promise<UsuarioResponse | null>;
-
-	findById(
-		id: string,
-		fastify: FastifyInstance,
-	): Promise<GetUsuarioResponse | null>;
->>>>>>> main
 }
