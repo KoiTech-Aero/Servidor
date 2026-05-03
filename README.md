@@ -60,7 +60,7 @@ A solução proposta consiste no desenvolvimento de um sistema para gerenciament
 
 |        📍 **Entrega 1**        |    📍 **Entrega 2**     |        📍 **Entrega 3**        |
 | :----------------------------: | :---------------------: | :----------------------------: |
-| **Estrutura básica de normas** | **Organização e busca** | **Interações e administração** |
+| **Estrutura básica de normas** | **Interações e administração** | **Organização e busca** |
 
 ## 📝 PRODUCT BACKLOG <a id="backlog"></a>
 
@@ -75,25 +75,27 @@ A solução proposta consiste no desenvolvimento de um sistema para gerenciament
 |  3   |   média    | Como gestor do sistema quero registrar versões de uma norma para manter histórico e rastreabilidade                                 |      8       |   1    |   🟩   |
 |  4   |   baixa    | Como gestor do sistema quero associar uma norma a outras normas referenciadas para representar as dependências entre normas         |      5       |   1    |   🟩   |
 |  5   |   baixa    | Como engenheiro quero visualizar quais normas são referenciadas por uma norma para entender suas dependências técnicas              |      7       |   1    |   🟩   |
-|  6   |    alta    | Como engenheiro quero pesquisar normas pelo código ou pelo nome para encontrar rapidamente uma norma específica                     |      6       |   2    |   ❌   |
-|  7   |   média    | Como gestor do sistema quero cadastrar novas tags para classificar normas de forma padronizada                                      |      5       |   2    |   ❌   |
-|  8   |   média    | Como gestor do sistema quero associar tags às normas para melhorar a organização e busca                                            |      5       |   2    |   ❌   |
-|  9   |   média    | Como engenheiro quero pesquisar normas por palavras-chave (tags) para encontrar normas relacionadas a um tema técnico               |      7       |   2    |   ❌   |
-|  10  |    alta    | Como engenheiro quero solicitar uma nota para uma norma para registrar observações ou interpretações técnicas                       |      8       |   3    |   ❌   |
-|  11  |    alta    | Como gestor do sistema quero cadastrar novos usuários no sistema para que eles possam acessar a plataforma conforme suas permissões |      5       |   3    |   ❌   |
-|  12  |   média    | Como gestor do sistema quero aprovar ou rejeitar notas solicitadas para controlar o conteúdo exibido no sistema                     |      7       |   3    |   ❌   |
-|  13  |   média    | Como engenheiro quero visualizar as notas aprovadas em uma norma para entender observações relevantes                               |      7       |   3    |   ❌   |
-|  14  |   baixa    | Como engenheiro quero solicitar o cadastro de uma norma para que ela seja adquirida ou cadastrada pela empresa                      |      7       |   3    |   ❌   |
-|  15  |   baixa    | Como gestor do sistema quero visualizar a lista de usuários cadastrados para que eu possa gerenciar quem tem acesso ao sistema      |      4       |   3    |   ❌   |
-|  16  |   baixa    | Como gestor do sistema quero alterar dados ou permissões de um usuário para que eu possa ajustar seu acesso quando necessário       |      5       |   3    |   ❌   |
-|  17  |   baixa    | Como gestor do sistema quero desativar usuários para que eles não tenham mais acesso ao sistema                                     |      4       |   3    |   ❌   |
+|  6  |    alta    | Como gestor do sistema quero cadastrar novos usuários no sistema para que eles possam acessar a plataforma conforme suas permissões |      5       |   2    |   🟩   |
+|  7  |   alta    | Como gestor do sistema quero desativar usuários para que eles não tenham mais acesso ao sistema                                     |      4       |   2    |   🟩   |
+|  8  |   média    | Como gestor do sistema quero visualizar a lista de usuários cadastrados para que eu possa gerenciar quem tem acesso ao sistema      |      4       |   2    |   🟩   |
+|  9  |   média    | Como gestor do sistema quero alterar dados ou permissões de um usuário para que eu possa ajustar seu acesso quando necessário       |      5       |   2    |   🟩   |
+|  10  |   baixa    | Como engenheiro quero solicitar o cadastro de uma norma para que ela seja adquirida ou cadastrada pela empresa                      |      7       |   2    |   🟩   |
+|  11  |    alta    | Como engenheiro quero solicitar uma nota para uma norma para registrar observações ou interpretações técnicas                       |      8       |   3    |   ❌   |
+|  12   |    alta    | Como engenheiro quero pesquisar normas pelo código ou pelo nome para encontrar rapidamente uma norma específica                     |      6       |   3    |   ❌   |
+|  13  |   média    | Como gestor do sistema quero aprovar ou rejeitar notas solicitadas para controlar o conteúdo exibido no sistema                     |      7       |   3    |   ❌   |
+|  14  |   média    | Como engenheiro quero visualizar as notas aprovadas em uma norma para entender observações relevantes                               |      7       |   3    |   ❌   |
+|  15   |   média    | Como gestor do sistema quero cadastrar novas tags para classificar normas de forma padronizada                                      |      5       |   3    |   ❌   |
+|  16   |   média    | Como gestor do sistema quero associar tags às normas para melhorar a organização e busca                                            |      5       |   3    |   ❌   |
+|  17   |   média    | Como engenheiro quero pesquisar normas por palavras-chave (tags) para encontrar normas relacionadas a um tema técnico               |      7       |   3    |   ❌   |
+
+
 
 ## 📅 Cronograma de Sprints <a id="cronograma"></a>
 
 | Sprint          |     Período      | Documentação                                                                                    | Demonstração     |
 | --------------- | :--------------: | ----------------------------------------------------------------------------------------------- | ---------------- |
 | 🔖 **SPRINT 1** | 🗓️ 16/03 - 05/04 | 📄 [Sprint 1 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2001.md) | 🎥 [Ver Demo](https://www.youtube.com/watch?v=e-QOllVsI6s) |
-| 🔖 **SPRINT 2** | 🗓️ 13/04 - 03/05 | 📄 [Sprint 2 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2002.md) | 🎥 [Ver Demo](#) |
+| 🔖 **SPRINT 2** | 🗓️ 13/04 - 03/05 | 📄 [Sprint 2 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2002.md) | 🎥 [Ver Demo](https://www.youtube.com/watch?v=TPd1F329pM4) |
 | 🔖 **SPRINT 3** | 🗓️ 11/05 - 31/05 | 📄 [Sprint 3 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2003.md) | 🎥 [Ver Demo](#) |
 
 ## 🪵 Branch Strategy <a id="branchstrategy"></a>
@@ -113,9 +115,29 @@ Github Flow foi a estrátegia escolhida por ser fácil e rápida de trabalhar, p
 ```
 ├── 📁 .github
 │   └── 📁 workflows
-│       └── ⚙️ linting.yaml
+│       ├── ⚙️ linting.yaml
+│       └── ⚙️ update_submodule.yaml
 ├── 📁 .husky
+│   ├── 📁 _
+│   │   ├── ⚙️ .gitignore
+│   │   ├── 📄 applypatch-msg
+│   │   ├── 📄 commit-msg
+│   │   ├── 📄 h
+│   │   ├── 📄 husky.sh
+│   │   ├── 📄 post-applypatch
+│   │   ├── 📄 post-checkout
+│   │   ├── 📄 post-commit
+│   │   ├── 📄 post-merge
+│   │   ├── 📄 post-rewrite
+│   │   ├── 📄 pre-applypatch
+│   │   ├── 📄 pre-auto-gc
+│   │   ├── 📄 pre-commit
+│   │   ├── 📄 pre-merge-commit
+│   │   ├── 📄 pre-push
+│   │   ├── 📄 pre-rebase
+│   │   └── 📄 prepare-commit-msg
 │   └── 📄 commit-msg
+├── 📁 Documentos
 ├── 📁 infra
 │   ├── 📁 scripts
 │   │   └── 📄 wait-for-postgres.js
@@ -126,13 +148,27 @@ Github Flow foi a estrátegia escolhida por ser fácil e rápida de trabalhar, p
 │   │   │   └── 📄 migration.sql
 │   │   ├── 📁 20260324174503_add_escopo_to_normal
 │   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260426115553_update_solicitacao_model
+│   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260426121321_solicitacao_test_sem_usuario
+│   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260426142538_update_solicitacao
+│   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260426152701_update_solicitacao
+│   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260501165446_login
+│   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260501191731
+│   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260503135455_remove_vizualizador_for_visualizador
+│   │   │   └── 📄 migration.sql
 │   │   └── ⚙️ migration_lock.toml
 │   ├── 📁 models
 │   │   ├── 📄 norma-referencia.prisma
 │   │   ├── 📄 normas-tags.prisma
 │   │   ├── 📄 normas.prisma
 │   │   ├── 📄 nota.prisma
-│   │   ├── 📄 solicitacao.prisma
+│   │   ├── 📄 solicitacao-norma.prisma
 │   │   ├── 📄 tag.prisma
 │   │   ├── 📄 usuario.prisma
 │   │   └── 📄 versao.prisma
@@ -141,6 +177,8 @@ Github Flow foi a estrátegia escolhida por ser fácil e rápida de trabalhar, p
 │   ├── 📁 entidades
 │   │   ├── 📄 NormaReferenciaRepository.ts
 │   │   ├── 📄 NormaRepository.ts
+│   │   ├── 📄 SolicitacaoRepository.ts
+│   │   ├── 📄 UsuarioRepository.ts
 │   │   ├── 📄 VersaoRepository.ts
 │   │   └── 📄 prismaError.ts
 │   ├── 📁 plugin
@@ -149,34 +187,59 @@ Github Flow foi a estrátegia escolhida por ser fácil e rápida de trabalhar, p
 │   │   └── 📁 prisma
 │   │       ├── 📄 PrismaNormaReferenciaRepository.ts
 │   │       ├── 📄 PrismaNormaRepository.ts
+│   │       ├── 📄 PrismaSolicitacaoRepository.ts
+│   │       ├── 📄 PrismaUsuarioRepository.ts
 │   │       └── 📄 PrismaVersaoRepository.ts
 │   ├── 📁 routes
 │   │   ├── 📁 tests
 │   │   │   ├── 📄 get-norma.test.ts
-│   │   │   └── 📄 post-norma.test.ts
+│   │   │   ├── 📄 post-norma.test.ts
+│   │   │   └── 📄 solicitacao.test.ts
 │   │   ├── 📄 delete-relacionar-norma.ts
 │   │   ├── 📄 get-norma.ts
 │   │   ├── 📄 get-relacionar-norma.ts
+│   │   ├── 📄 get-solicitacao.ts
+│   │   ├── 📄 get-usuarioID.ts
+│   │   ├── 📄 get-usuarios.ts
+│   │   ├── 📄 patch-usuario.ts
+│   │   ├── 📄 post-login.ts
 │   │   ├── 📄 post-norma.ts
 │   │   ├── 📄 post-relacionar-norma.ts
-│   │   └── 📄 post-versao.ts
+│   │   ├── 📄 post-solicitar-norma.ts
+│   │   ├── 📄 post-usuario.ts
+│   │   ├── 📄 post-versao.ts
+│   │   └── 📄 put-usuario.ts
 │   ├── 📁 services
 │   │   ├── 📄 associateNorma.ts
 │   │   ├── 📄 createNorma.ts
+│   │   ├── 📄 createSolicitacao.ts
+│   │   ├── 📄 createUsuario.ts
 │   │   ├── 📄 createVersao.ts
 │   │   ├── 📄 deleteNorma.ts
+│   │   ├── 📄 getSolicitacao.ts
+│   │   ├── 📄 getUsuario.ts
+│   │   ├── 📄 login.ts
+│   │   ├── 📄 patchUsuario.ts
 │   │   ├── 📄 readNorma.ts
-│   │   └── 📄 readNormaReferencia.ts
+│   │   ├── 📄 readNormaReferencia.ts
+│   │   ├── 📄 readUsuario.ts
+│   │   └── 📄 updateUsuario.ts
 │   ├── 📁 tests
 │   │   └── 📄 app.test.ts
 │   ├── 📁 types
 │   │   ├── 📄 conditions.ts
 │   │   └── 📄 getNormaResponse.ts
+│   ├── 📁 utils
+│   │   └── 📄 jwt.ts
+│   ├── 📝 README.md
 │   ├── 📄 app.ts
 │   ├── 📄 cli.ts
 │   ├── 📄 env.ts
 │   └── 📄 server.ts
+├── 📁 uploads
+│   └── ⚙️ .gitignore
 ├── ⚙️ .gitignore
+├── ⚙️ .gitmodules
 ├── 📝 README.md
 ├── 📄 commitlint.config.js
 ├── ⚙️ package-lock.json
@@ -189,26 +252,52 @@ Github Flow foi a estrátegia escolhida por ser fácil e rápida de trabalhar, p
 **Front-end**
 
 ```
+├── 📁 .github
+│   └── 📁 workflows
+│       └── ⚙️ update_submodule.yaml
+├── 📁 Documentos
 ├── 📁 src
 │   ├── 📁 components
+│   │   ├── 📄 AcessoNegado.jsx
 │   │   ├── 📄 BarraPesquisa.jsx
 │   │   ├── 📄 FiltroArea.jsx
 │   │   ├── 📄 Header.jsx
 │   │   ├── 📄 Menu.jsx
 │   │   └── 📄 NormaPreview.jsx
+│   ├── 📁 context
+│   │   ├── 📄 AuthContext.jsx
+│   │   └── 📄 AuthProvider.jsx
+│   ├── 📁 enums
+│   │   ├── 📄 permissoes.js
+│   │   ├── 📄 rolePermissoes.js
+│   │   └── 📄 roles.js
 │   ├── 📁 layouts
+│   │   ├── 📄 LayoutAuth.jsx
 │   │   └── 📄 LayoutSistema.jsx
 │   ├── 📁 pages
 │   │   ├── 📄 CadastrarNorma.jsx
+│   │   ├── 📄 CadastrarUsuario.jsx
 │   │   ├── 📄 CadastrarVersao.jsx
+│   │   ├── 📄 EditarUsuario.jsx
+│   │   ├── 📄 Login.jsx
 │   │   ├── 📄 PesquisarNorma.jsx
+│   │   ├── 📄 SolicitarNorma.jsx
 │   │   ├── 📄 VisualizarNorma.jsx
+│   │   ├── 📄 VisualizarUsuarios.jsx
 │   │   └── 📄 VisualizarVersao.jsx
+│   ├── 📁 routes
+│   │   └── 📄 RotaPrivada.jsx
+│   ├── 📁 services
+│   │   └── 📄 api.js
+│   ├── 📁 utils
+│   │   └── 📄 temPermissao.js
 │   ├── 🎨 App.css
 │   ├── 📄 App.jsx
 │   ├── 🎨 index.css
 │   └── 📄 main.jsx
 ├── ⚙️ .gitignore
+├── ⚙️ .gitmodules
+├── 📝 README.md
 ├── 📄 eslint.config.js
 ├── 🌐 index.html
 ├── ⚙️ package-lock.json
