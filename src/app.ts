@@ -4,9 +4,9 @@ import multipart from "@fastify/multipart";
 import fastifyStatic from "@fastify/static";
 import Fastify, { type FastifyError } from "fastify";
 import {
-	serializerCompiler,
-	validatorCompiler,
-	type ZodTypeProvider,
+  serializerCompiler,
+  validatorCompiler,
+  type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import prismaPlugin from "./plugin/db-connector.js";
 import { deleteRelacionarNorma } from "./routes/delete-relacionar-norma.js";
@@ -27,51 +27,54 @@ import { putUsuario } from "./routes/put-usuario.js";
 import { postLogin } from "./routes/post-login.js";
 
 export async function buildServer(opts = {}) {
-	const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
-	fastify.setValidatorCompiler(validatorCompiler);
-	fastify.setSerializerCompiler(serializerCompiler);
+  const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
+  fastify.setValidatorCompiler(validatorCompiler);
+  fastify.setSerializerCompiler(serializerCompiler);
 
-	fastify.setErrorHandler(async (e: FastifyError, _request, reply) => {
-		if (e.code === "FST_ERR_VALIDATION")
-			return reply.status(400).send({ typeError: e.code, message: e.message });
+  fastify.setErrorHandler(async (e: FastifyError, _request, reply) => {
+    if (e.code === "FST_ERR_VALIDATION")
+      return reply.status(400).send({ typeError: e.code, message: e.message });
 
-		if (e.code === "FST_REQ_FILE_TOO_LARGE")
-			return reply.status(413).send({
-				typeError: e.code,
-				message: e.message,
-			});
-		return reply.send(e);
-	});
+    if (e.code === "FST_REQ_FILE_TOO_LARGE")
+      return reply.status(413).send({
+        typeError: e.code,
+        message: e.message,
+      });
+    return reply.send(e);
+  });
 
-	fastify.get("/health", (_request, reply) => {
-		reply.code(200).send({ status: "OK" });
-	});
+  fastify.get("/health", (_request, reply) => {
+    reply.code(200).send({ status: "OK" });
+  });
 
-	await fastify.register(multipart, {
-		limits: {
-			fileSize: 10 * 1024 * 1024,
-		},
-	});
-	await fastify.register(fastifyStatic, {
-		root: path.join(process.cwd(), "uploads"),
-		prefix: "/uploads/",
-	});
-	await fastify.register(cors);
-	await fastify.register(prismaPlugin);
-	await fastify.register(postNorma);
-	await fastify.register(getNorma);
-	await fastify.register(postVersao);
-	await fastify.register(postRelacionarNorma);
-	await fastify.register(deleteRelacionarNorma);
-	await fastify.register(getRelacionarNorma);
-	await fastify.register(PostUsuario);
-	await fastify.register(getUsuarios);
-	await fastify.register(putUsuario);
-	await fastify.register(patchUsuario);
-	await fastify.register(postSolicitacao);
-	await fastify.register(getSolicitacao);
-	await fastify.register(getUsuario);
-	await fastify.register(postLogin);
+  await fastify.register(multipart, {
+    limits: {
+      fileSize: 10 * 1024 * 1024,
+    },
+  });
+  await fastify.register(fastifyStatic, {
+    root: path.join(process.cwd(), "uploads"),
+    prefix: "/uploads/",
+  });
+  await fastify.register(cors, {
+    origin: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  });
+  await fastify.register(prismaPlugin);
+  await fastify.register(postNorma);
+  await fastify.register(getNorma);
+  await fastify.register(postVersao);
+  await fastify.register(postRelacionarNorma);
+  await fastify.register(deleteRelacionarNorma);
+  await fastify.register(getRelacionarNorma);
+  await fastify.register(PostUsuario);
+  await fastify.register(getUsuarios);
+  await fastify.register(putUsuario);
+  await fastify.register(patchUsuario);
+  await fastify.register(postSolicitacao);
+  await fastify.register(getSolicitacao);
+  await fastify.register(getUsuario);
+  await fastify.register(postLogin);
 
-	return fastify;
+  return fastify;
 }
