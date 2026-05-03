@@ -47,6 +47,9 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
         id: true,
         nome: true,
         email: true,
+        role: true,
+        status: true,
+        data_cadastro: true,
       },
     });
 

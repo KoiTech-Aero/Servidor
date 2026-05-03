@@ -8,11 +8,11 @@ import { PrismaError } from "../entidades/prismaError.js";
 import type { UsuarioRepository } from "../entidades/UsuarioRepository.js";
 
 interface CreateUsuarioRequest {
-	nome: string;
-	email: string;
-	senha: string;
-	role: "Engenheiro" | "Gestor" | "Visualizador";
-	status: boolean;
+  nome: string;
+  email: string;
+  senha: string;
+  role: "Engenheiro" | "Gestor" | "Visualizador";
+  status: boolean;
 }
 
 export class createUsuario {
