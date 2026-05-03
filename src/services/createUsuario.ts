@@ -11,7 +11,7 @@ interface CreateUsuarioRequest {
   nome: string;
   email: string;
   senha: string;
-  role: "Engenheiro" | "Gestor" | "Vizualizador";
+  role: "Engenheiro" | "Gestor" | "Visualizador";
   status: boolean;
 }
 

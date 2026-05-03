@@ -14,6 +14,9 @@ export interface UsuarioResponse {
   id: string;
   nome: string;
   email: string;
+  role: "Engenheiro" | "Gestor" | "Visualizador";
+  status: boolean;
+  data_cadastro: Date;
 }
 
 export const CreateUsuarioSchema = z.object({
