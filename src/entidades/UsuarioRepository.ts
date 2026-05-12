@@ -57,7 +57,8 @@ export interface UpdateUsuarioResponse {
 export const PatchUsuarioSchema = z.object({
   nome: z.string().optional(),
   email: z.string().email().optional(),
-  role: z.enum(["Engenheiro", "Gestor"]).optional(),
+  senha: z.string().optional(),
+  role: z.enum(["Engenheiro", "Gestor", "Visualizador"]).optional(),
   status: z.boolean().optional(),
 });
 

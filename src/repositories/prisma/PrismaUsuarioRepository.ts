@@ -1,15 +1,16 @@
 import type { FastifyInstance } from "fastify";
+import bcrypt from "bcrypt"
 import { PrismaError } from "../../entidades/prismaError.js";
 import type {
-	GetUsuarioResponse,
-	PatchUsuarioData,
-	PatchUsuarioResponse,
-	UpdateUsuarioData,
-	UpdateUsuarioResponse,
-	UsuarioCreateData,
-	UsuarioCreateResponse,
-	UsuarioRepository,
-	UsuarioResponse,
+  GetUsuarioResponse,
+  PatchUsuarioData,
+  PatchUsuarioResponse,
+  UpdateUsuarioData,
+  UpdateUsuarioResponse,
+  UsuarioCreateData,
+  UsuarioCreateResponse,
+  UsuarioRepository,
+  UsuarioResponse,
 } from "../../entidades/UsuarioRepository.js";
 export class PrismaUsuarioRepository implements UsuarioRepository {
   async create(
@@ -95,6 +96,9 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
       data: {
         ...(data.nome !== undefined && { nome: data.nome }),
         ...(data.email !== undefined && { email: data.email }),
+        ...(data.senha !== undefined && {
+          senha: await bcrypt.hash(data.senha, 10),
+        }),
         ...(data.role !== undefined && { role: data.role }),
         ...(data.status !== undefined && { status: data.status }),
       },
