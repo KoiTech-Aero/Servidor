@@ -4,6 +4,8 @@ import type {
   SolicitacaoRepository,
   ReadSolicitacaoProps,
   ReadSolicitacaoResponse,
+  PatchSolicitacaoData,
+  PatchSolicitacaoResponse,
 } from "../../entidades/SolicitacaoRepository.js";
 
 export class PrismaSolicitacaoRepository implements SolicitacaoRepository {
@@ -71,5 +73,26 @@ export class PrismaSolicitacaoRepository implements SolicitacaoRepository {
           }
         : null,
     }));
+  }
+
+  async patch(
+    id: string,
+    data: PatchSolicitacaoData,
+    fastify: FastifyInstance,
+  ): Promise<PatchSolicitacaoResponse> {
+    const solicitacao = await fastify.prisma.solicitacaoNorma.update({
+      where: {
+        id: id,
+      },
+
+      data: {
+        ...(data.status !== undefined && { status: data.status }),
+      },
+    });
+
+    return {
+      id: solicitacao.id,
+      status: solicitacao.status,
+    };
   }
 }
