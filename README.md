@@ -108,6 +108,8 @@ A solução proposta consiste no desenvolvimento de um sistema para gerenciament
 |  15  |   média    | Como gestor do sistema quero cadastrar novas tags para classificar normas de forma padronizada                                      |      5       |   3    |   ❌   |
 |  16  |   média    | Como gestor do sistema quero associar tags às normas para melhorar a organização e busca                                            |      5       |   3    |   ❌   |
 |  17  |   média    | Como engenheiro quero pesquisar normas por palavras-chave (tags) para encontrar normas relacionadas a um tema técnico               |      7       |   3    |   ❌   |
+|  18  |   média    | Como engenheiro, quero visualizar as solicitações de normas realizadas, para poder avaliar suas implementações no sistema               |      5       |   3    |   ❌   |
+|  19  |   baixa    | Como engenheiro, quero aprovar ou rejeitar uma solicitação de norma, para que o cadastro de normas seja criterioso               |      6       |   3    |   ❌   |
 
 <br>
 
