@@ -23,6 +23,7 @@ import { postSolicitacao } from "./routes/post-solicitar-norma.js";
 import { PostUsuario } from "./routes/post-usuario.js";
 import { postVersao } from "./routes/post-versao.js";
 import { putUsuario } from "./routes/put-usuario.js";
+import { patchSolicitacao } from "./routes/patch-solicitacao.js";
 
 import { postLogin } from "./routes/post-login.js";
 
@@ -74,6 +75,7 @@ export async function buildServer(opts = {}) {
   await fastify.register(postSolicitacao);
   await fastify.register(getSolicitacao);
   await fastify.register(getUsuario);
+  await fastify.register(patchSolicitacao);
   await fastify.register(postLogin);
 
   return fastify;

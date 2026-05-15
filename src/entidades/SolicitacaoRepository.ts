@@ -46,6 +46,17 @@ export interface ReadSolicitacaoResponse {
   } | null;
 }
 
+export const PatchSolicitacaoSchema = z.object({
+  status: z.enum(["Aprovado", "Pendente", "Recusado"]).optional(),
+});
+
+export type PatchSolicitacaoData = z.infer<typeof PatchSolicitacaoSchema>;
+
+export interface PatchSolicitacaoResponse {
+  id: string;
+  status: "Aprovado" | "Pendente" | "Recusado";
+}
+
 export interface SolicitacaoRepository {
   create(
     data: CreateSolicitacaoData,
@@ -53,4 +64,10 @@ export interface SolicitacaoRepository {
   ): Promise<CreateSolicitacaoResponse>;
 
   read(props: ReadSolicitacaoProps): Promise<ReadSolicitacaoResponse[]>;
+
+  patch(
+      id: string,
+      data: PatchSolicitacaoData,
+      fastify: FastifyInstance,
+    ): Promise<PatchSolicitacaoResponse>;
 }
