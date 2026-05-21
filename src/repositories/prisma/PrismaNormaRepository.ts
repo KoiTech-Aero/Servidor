@@ -31,7 +31,7 @@ export class PrismaNormaRepository implements NormaRepository {
 
 	async read({ conditions, fastify }: ReadNormaProps) {
 		let boolStatus: boolean | null = null;
-		if(conditions?.status) {
+		if (conditions?.status) {
 			boolStatus = conditions?.status === "true";
 		}
 
@@ -40,8 +40,8 @@ export class PrismaNormaRepository implements NormaRepository {
 				where: {
 					versoes: {
 						some: {
-							status: boolStatus
-						}
+							status: boolStatus,
+						},
 					},
 				},
 			}),
@@ -49,10 +49,16 @@ export class PrismaNormaRepository implements NormaRepository {
 				versoes: {
 					select: {
 						versao_numero: true,
-                        descricao: true,
-                        data_publicacao: true,
-                        path_file: true,
-                        status: true,
+						descricao: true,
+						data_publicacao: true,
+						path_file: true,
+						status: true,
+					},
+				},
+				tags: {
+					select: {
+						id_tag: true,
+						tag: true,
 					},
 				},
 			},
