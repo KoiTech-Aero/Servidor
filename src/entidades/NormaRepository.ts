@@ -42,6 +42,12 @@ export interface ReadNormaResponse {
 		data_publicacao: Date;
 		status: boolean;
 	}[];
+	tags: {
+		tag: {
+			id: string;
+			nome: string;
+		};
+	}[];
 }
 
 export interface NormaRepository {

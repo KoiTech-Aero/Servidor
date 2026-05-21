@@ -3,6 +3,7 @@ import type {
 	CreateNormaData,
 	NormaRepository,
 	ReadNormaProps,
+	ReadNormaResponse,
 } from "../../entidades/NormaRepository.js";
 
 export class PrismaNormaRepository implements NormaRepository {
@@ -29,7 +30,10 @@ export class PrismaNormaRepository implements NormaRepository {
 		return { statusCode: 201, id: response.id };
 	}
 
-	async read({ conditions, fastify }: ReadNormaProps) {
+	async read({
+		conditions,
+		fastify,
+	}: ReadNormaProps): Promise<ReadNormaResponse[]> {
 		let boolStatus: boolean | null = null;
 		if (conditions?.status) {
 			boolStatus = conditions?.status === "true";
@@ -57,8 +61,12 @@ export class PrismaNormaRepository implements NormaRepository {
 				},
 				tags: {
 					select: {
-						id_tag: true,
-						tag: true,
+						tag: {
+							select: {
+								id: true,
+								nome: true,
+							},
+						},
 					},
 				},
 			},
