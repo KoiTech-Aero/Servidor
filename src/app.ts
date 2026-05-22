@@ -10,6 +10,7 @@ import {
 } from "fastify-type-provider-zod";
 import prismaPlugin from "./plugin/db-connector.js";
 import { deleteRelacionarNorma } from "./routes/delete-relacionar-norma.js";
+import { deleteTag } from "./routes/delete-tag.js";
 import { getNorma } from "./routes/get-norma.js";
 import { getRelacionarNorma } from "./routes/get-relacionar-norma.js";
 import { getSolicitacao } from "./routes/get-solicitacao.js";
@@ -81,6 +82,7 @@ export async function buildServer(opts = {}) {
   await fastify.register(postLogin);
   await fastify.register(postTag);
   await fastify.register(getTags);
+  await fastify.register(deleteTag);
 
   return fastify;
 }

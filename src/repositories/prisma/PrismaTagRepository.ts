@@ -48,4 +48,17 @@ export class PrismaTagRepository
 
 }
 
+async delete(
+  id: string,
+  fastify: FastifyInstance
+): Promise<void> {
+
+  await fastify.prisma.tag.delete({
+    where: {
+      id: id,
+    },
+  });
+
+}
+
 }

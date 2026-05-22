@@ -32,4 +32,9 @@ export interface TagRepository {
   fastify: FastifyInstance
 ): Promise<ReadTagResponse[]>;
 
+delete(
+  id: string,
+  fastify: FastifyInstance
+): Promise<void>;
+
 }
