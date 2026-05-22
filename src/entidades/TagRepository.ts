@@ -15,11 +15,21 @@ export interface CreateTagResponse {
   descricao: string;
 }
 
+export interface ReadTagResponse {
+  id: string;
+  nome: string;
+  descricao: string;
+}
+
 export interface TagRepository {
 
   create(
     data: CreateTagData,
     fastify: FastifyInstance
   ): Promise<CreateTagResponse>;
+
+  read(
+  fastify: FastifyInstance
+): Promise<ReadTagResponse[]>;
 
 }

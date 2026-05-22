@@ -4,6 +4,7 @@ import type {
   TagRepository,
   CreateTagData,
   CreateTagResponse,
+  ReadTagResponse,
 } from "../../entidades/TagRepository.js";
 
 export class PrismaTagRepository
@@ -29,5 +30,22 @@ export class PrismaTagRepository
     };
 
   }
+
+  async read(
+  fastify: FastifyInstance
+): Promise<ReadTagResponse[]> {
+
+  const tags =
+    await fastify.prisma.tag.findMany({
+      select: {
+        id: true,
+        nome: true,
+        descricao: true,
+      },
+    });
+
+  return tags;
+
+}
 
 }
