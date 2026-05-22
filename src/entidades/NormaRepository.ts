@@ -16,6 +16,11 @@ const createNormaDataSchema = z.object({
 		path_file: z.url(),
 		status: z.boolean(),
 	}),
+	tags: z.array(
+		z.object({
+			id: z.string(),
+		}),
+	),
 });
 
 export type CreateNormaData = z.infer<typeof createNormaDataSchema>;
