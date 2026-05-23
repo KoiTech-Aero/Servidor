@@ -1,3 +1,5 @@
+import { unlink } from "node:fs/promises";
+import path from "node:path";
 import type { FastifyInstance } from "fastify";
 import type {
 	CreateNormaData,
@@ -89,13 +91,26 @@ export class PrismaNormaRepository implements NormaRepository {
 		idNorma,
 		fastify,
 	}: DeleteNormaProps): Promise<DeleteNormaResponse> {
-		const deleteNorma = await fastify.prisma.norma.delete({
-			where: {
-				id: idNorma,
-			},
+		const deletedNorma = await fastify.prisma.$transaction(async (tx) => {
+			return tx.norma.delete({
+				where: {
+					id: idNorma,
+				},
+				include: {
+					versoes: true,
+				},
+			});
 		});
 
-		if (!deleteNorma.id) throw new Error("Norma não encontrada");
+		const uploadDir = path.join(process.cwd(), "uploads");
+
+		deletedNorma.versoes.map(async (v) => {
+			const paths = v.path_file.split("/");
+			const fileName = paths[paths.length - 1];
+			if (fileName) {
+				await unlink(path.join(uploadDir, fileName));
+			}
+		});
 
 		return { statusCode: 200 };
 	}

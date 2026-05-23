@@ -1,4 +1,7 @@
-import { PrismaClientInitializationError } from "@prisma/client/runtime/wasm-compiler-edge";
+import {
+	PrismaClientInitializationError,
+	PrismaClientKnownRequestError,
+} from "@prisma/client/runtime/wasm-compiler-edge";
 import type { FastifyInstance } from "fastify";
 import type { NormaRepository } from "../entidades/NormaRepository.js";
 import { PrismaError } from "../entidades/prismaError.js";
@@ -18,6 +21,11 @@ export class DeleteNorma {
 
 			return deleteResponse;
 		} catch (e) {
+			if (e instanceof PrismaClientKnownRequestError) {
+				if (e.code === "P2025")
+					throw new PrismaError(e.message, 500, e.code || "1", "Server Error");
+			}
+
 			if (e instanceof PrismaClientInitializationError) {
 				throw new PrismaError(
 					e.message,
