@@ -1,8 +1,8 @@
+import fs from "node:fs";
+import { unlink } from "node:fs/promises";
+import path from "node:path";
+import { pipeline } from "node:stream/promises";
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
-import fs from "fs";
-import { unlink } from "fs/promises";
-import path from "path";
-import { pipeline } from "stream/promises";
 import { z } from "zod";
 import { PrismaError } from "../entidades/prismaError.js";
 import { PrismaVersaoRepository } from "../repositories/prisma/PrismaVersaoRepository.js";

@@ -1,6 +1,10 @@
+import { unlink } from "node:fs/promises";
+import path from "node:path";
 import type { FastifyInstance } from "fastify";
 import type {
 	CreateNormaData,
+	DeleteNormaProps,
+	DeleteNormaResponse,
 	NormaRepository,
 	ReadNormaProps,
 	ReadNormaResponse,
@@ -44,20 +48,15 @@ export class PrismaNormaRepository implements NormaRepository {
 	}
 
 	async read({
-		conditions,
+		status,
 		fastify,
 	}: ReadNormaProps): Promise<ReadNormaResponse[]> {
-		let boolStatus: boolean | null = null;
-		if (conditions?.status) {
-			boolStatus = conditions?.status === "true";
-		}
-
 		const response = await fastify.prisma.norma.findMany({
-			...(boolStatus !== null && {
+			...(status !== null && {
 				where: {
 					versoes: {
 						some: {
-							status: boolStatus,
+							status: status,
 						},
 					},
 				},
@@ -86,5 +85,33 @@ export class PrismaNormaRepository implements NormaRepository {
 		});
 
 		return response;
+	}
+
+	async delete({
+		idNorma,
+		fastify,
+	}: DeleteNormaProps): Promise<DeleteNormaResponse> {
+		const deletedNorma = await fastify.prisma.$transaction(async (tx) => {
+			return tx.norma.delete({
+				where: {
+					id: idNorma,
+				},
+				include: {
+					versoes: true,
+				},
+			});
+		});
+
+		const uploadDir = path.join(process.cwd(), "uploads");
+
+		deletedNorma.versoes.map(async (v) => {
+			const paths = v.path_file.split("/");
+			const fileName = paths[paths.length - 1];
+			if (fileName) {
+				await unlink(path.join(uploadDir, fileName));
+			}
+		});
+
+		return { statusCode: 200 };
 	}
 }

@@ -15,9 +15,8 @@ export class ReadNorma {
 
 	async execute(conditions: Conditions) {
 		try {
-			const boolStatus = conditions?.status;
 			const normas = await this.normaRepository.read({
-				conditions: { status: boolStatus },
+				status: conditions.status,
 				fastify: this.fastify,
 			});
 			return normas;

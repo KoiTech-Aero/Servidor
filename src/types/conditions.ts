@@ -1,3 +1,3 @@
 export interface Conditions {
-	status: string;
+	status: boolean | null;
 }

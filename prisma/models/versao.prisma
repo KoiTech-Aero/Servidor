@@ -5,13 +5,12 @@ model Versao {
   data_publicacao DateTime @default(now()) @db.Date
   path_file       String   @db.Text
   status          Boolean  @default(false) @db.Boolean
-  
+
   //Relacionamento com norma
-  norma           Norma    @relation(fields: [id_norma], references: [codigo])
-  
+  norma Norma @relation(fields: [id_norma], references: [codigo], onDelete: Cascade)
+
   //Relacionamento com nota
   notas Nota[]
 
-
-  @@id(name: "versaoId", fields:[id_norma, versao_numero])
+  @@id(name: "versaoId", fields: [id_norma, versao_numero])
 }

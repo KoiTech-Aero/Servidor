@@ -17,7 +17,7 @@ const bodySchema = z.object({
 	versao_numero: z.string(),
 	descricao: z.string(),
 	data_publicacao: z.coerce.date(),
-	status: z.coerce.boolean(),
+	status: z.stringbool(),
 	tags: z.array(
 		z.object({
 			id: z.string(),
