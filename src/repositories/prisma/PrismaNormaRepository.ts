@@ -1,6 +1,8 @@
 import type { FastifyInstance } from "fastify";
 import type {
 	CreateNormaData,
+	DeleteNormaProps,
+	DeleteNormaResponse,
 	NormaRepository,
 	ReadNormaProps,
 	ReadNormaResponse,
@@ -86,5 +88,20 @@ export class PrismaNormaRepository implements NormaRepository {
 		});
 
 		return response;
+	}
+
+	async delete({
+		idNorma,
+		fastify,
+	}: DeleteNormaProps): Promise<DeleteNormaResponse> {
+		const deleteNorma = await fastify.prisma.norma.delete({
+			where: {
+				id: idNorma,
+			},
+		});
+
+		if (!deleteNorma.id) throw new Error("Norma não encontrada");
+
+		return { statusCode: 200 };
 	}
 }

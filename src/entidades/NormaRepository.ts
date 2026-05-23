@@ -55,6 +55,15 @@ export interface ReadNormaResponse {
 	}[];
 }
 
+export interface DeleteNormaProps {
+	idNorma: string;
+	fastify: FastifyInstance;
+}
+
+export interface DeleteNormaResponse {
+	statusCode: number;
+}
+
 export interface NormaRepository {
 	create(
 		data: CreateNormaData,
@@ -62,4 +71,5 @@ export interface NormaRepository {
 	): Promise<CreateNormaResponse>;
 
 	read({ conditions, fastify }: ReadNormaProps): Promise<ReadNormaResponse[]>;
+	delete({ idNorma, fastify }: DeleteNormaProps): Promise<DeleteNormaResponse>;
 }
