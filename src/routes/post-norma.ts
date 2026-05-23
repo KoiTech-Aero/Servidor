@@ -18,10 +18,15 @@ const bodySchema = z.object({
 	descricao: z.string(),
 	data_publicacao: z.coerce.date(),
 	status: z.coerce.boolean(),
+	tags: z.array(
+		z.object({
+			id: z.string(),
+		}),
+	),
 });
 
 export const postNorma: FastifyPluginAsyncZod = async (fastify) => {
-	fastify.post("/addNorma", async (request, reply) => {
+	fastify.post("/normas", async (request, reply) => {
 		const parts = request.parts();
 
 		const data: any = {};
@@ -44,7 +49,11 @@ export const postNorma: FastifyPluginAsyncZod = async (fastify) => {
 
 					filePath = `/uploads/${fileName}`;
 				} else {
-					data[part.fieldname] = part.value;
+					if (part.fieldname === "tags") {
+						data[part.fieldname] = JSON.parse(part.value as string);
+					} else {
+						data[part.fieldname] = part.value;
+					}
 				}
 			}
 		} catch (e) {
@@ -75,6 +84,7 @@ export const postNorma: FastifyPluginAsyncZod = async (fastify) => {
 					status: parsed.data.status,
 					path_file: filePath,
 				},
+				tags: [...parsed.data.tags.map((tag) => ({ id: tag.id }))],
 			});
 
 			return reply.status(201).send(result);

@@ -7,8 +7,11 @@ import type {
 } from "../../entidades/NormaRepository.js";
 
 export class PrismaNormaRepository implements NormaRepository {
-	async create({ norma, versao }: CreateNormaData, fastify: FastifyInstance) {
-		const response = await fastify.prisma.norma.create({
+	async create(
+		{ norma, versao, tags }: CreateNormaData,
+		fastify: FastifyInstance,
+	) {
+		const responseNorma = await fastify.prisma.norma.create({
 			data: {
 				codigo: norma.codigo,
 				titulo: norma.titulo,
@@ -27,7 +30,17 @@ export class PrismaNormaRepository implements NormaRepository {
 			},
 		});
 
-		return { statusCode: 201, id: response.id };
+		const responseTag = await fastify.prisma.normasTags.createMany({
+			data: [
+				...tags.map((tag) => ({ id_norma: responseNorma.id, id_tag: tag.id })),
+			],
+			skipDuplicates: true,
+		});
+
+		if (!responseNorma.id && !responseTag.count)
+			throw new Error("Erro ao Criar Norma");
+
+		return { statusCode: 201, id: responseNorma.id };
 	}
 
 	async read({
