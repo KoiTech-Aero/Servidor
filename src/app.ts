@@ -30,6 +30,7 @@ import { postTag } from "./routes/post-tag.js";
 import { PostUsuario } from "./routes/post-usuario.js";
 import { postVersao } from "./routes/post-versao.js";
 import { putUsuario } from "./routes/put-usuario.js";
+import { postNota } from "./routes/post-nota.js";
 
 export async function buildServer(opts = {}) {
 	const fastify = Fastify(opts).withTypeProvider<ZodTypeProvider>();
@@ -87,6 +88,7 @@ export async function buildServer(opts = {}) {
 	await fastify.register(deleteNorma);
 	await fastify.register(getNotas);
 	await fastify.register(getNotaById);
+	await fastify.register(postNota);
 
 	return fastify;
 }
