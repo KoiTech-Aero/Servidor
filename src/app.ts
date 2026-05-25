@@ -18,6 +18,7 @@ import { getSolicitacao } from "./routes/get-solicitacao.js";
 import { getTags } from "./routes/get-tags.js";
 import { getUsuario } from "./routes/get-usuarioID.js";
 import { getUsuarios } from "./routes/get-usuarios.js";
+import { getNotas } from "./routes/get-notas.js";
 import { patchSolicitacao } from "./routes/patch-solicitacao.js";
 import { patchUsuario } from "./routes/patch-usuario.js";
 import { postLogin } from "./routes/post-login.js";
@@ -83,6 +84,7 @@ export async function buildServer(opts = {}) {
 	await fastify.register(getTags);
 	await fastify.register(deleteTag);
 	await fastify.register(deleteNorma);
+	await fastify.register(getNotas);
 
 	return fastify;
 }
