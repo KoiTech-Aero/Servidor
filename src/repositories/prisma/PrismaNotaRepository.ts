@@ -3,6 +3,8 @@ import type { FastifyInstance } from "fastify";
 import type {
   NotaRepository,
   ReadNotaResponse,
+  CreateNotaData,
+  CreateNotaResponse,
 } from "../../entidades/NotaRepository.js";
 
 export class PrismaNotaRepository
@@ -50,7 +52,27 @@ export class PrismaNotaRepository
       });
   
     return nota;
-  
   }
+
+  async create(
+    data: CreateNotaData,
+    fastify: FastifyInstance
+  ): Promise<CreateNotaResponse> {
   
+    const nota =
+      await fastify.prisma.nota.create({
+        data: {
+          text: data.text,
+          id_norma: data.id_norma,
+          versao_numero: data.versao_numero,
+        },
+      });
+  
+    return {
+      id: nota.id,
+      text: nota.text,
+      status: nota.status,
+    };
+  }
+
 }

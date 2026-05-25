@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import z from "zod";
 
 export interface ReadNotaResponse {
   id: string;
@@ -10,6 +11,21 @@ export interface ReadNotaResponse {
   versao_numero: string;
 }
 
+export const CreateNotaSchema = z.object({
+    text: z.string(),
+    id_norma: z.string(),
+    versao_numero: z.string(),
+  });
+  
+  export type CreateNotaData =
+    z.infer<typeof CreateNotaSchema>;
+  
+  export interface CreateNotaResponse {
+    id: string;
+    text: string;
+    status: string;
+  }
+
 export interface NotaRepository {
 
   read(
@@ -20,5 +36,10 @@ export interface NotaRepository {
     id: string,
     fastify: FastifyInstance
   ): Promise<ReadNotaResponse | null>;
+  
+  create(
+    data: CreateNotaData,
+    fastify: FastifyInstance
+  ): Promise<CreateNotaResponse>;
 
 }
