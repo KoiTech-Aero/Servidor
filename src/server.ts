@@ -10,7 +10,7 @@ const start = async () => {
 		logger: isDevOrTest,
 	});
 
-	const serverPort = env.SERVER_PORT;
+	const serverPort = env.SERVER_PORT || 4000;
 
 	try {
 		await server.prisma.$connect();
