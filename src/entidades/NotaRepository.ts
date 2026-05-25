@@ -16,4 +16,9 @@ export interface NotaRepository {
     fastify: FastifyInstance
   ): Promise<ReadNotaResponse[]>;
 
+  readById(
+    id: string,
+    fastify: FastifyInstance
+  ): Promise<ReadNotaResponse | null>;
+
 }

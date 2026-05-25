@@ -26,7 +26,31 @@ export class PrismaNotaRepository
       });
 
     return notas;
-
   }
 
+  async readById(
+    id: string,
+    fastify: FastifyInstance
+  ): Promise<ReadNotaResponse | null> {
+  
+    const nota =
+      await fastify.prisma.nota.findUnique({
+        where: {
+          id: id,
+        },
+        select: {
+          id: true,
+          text: true,
+          status: true,
+          data_solicitacao: true,
+          data_aprovacao: true,
+          id_norma: true,
+          versao_numero: true,
+        },
+      });
+  
+    return nota;
+  
+  }
+  
 }
