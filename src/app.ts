@@ -12,6 +12,7 @@ import prismaPlugin from "./plugin/db-connector.js";
 import { deleteNorma } from "./routes/delete-norma.js";
 import { deleteRelacionarNorma } from "./routes/delete-relacionar-norma.js";
 import { deleteTag } from "./routes/delete-tag.js";
+import { deleteNota } from "./routes/delete-nota.js";
 import { getNorma } from "./routes/get-norma.js";
 import { getRelacionarNorma } from "./routes/get-relacionar-norma.js";
 import { getSolicitacao } from "./routes/get-solicitacao.js";
@@ -91,6 +92,7 @@ export async function buildServer(opts = {}) {
 	await fastify.register(getNotaById);
 	await fastify.register(postNota);
 	await fastify.register(patchNota);
+	await fastify.register(deleteNota);
 
 	return fastify;
 }

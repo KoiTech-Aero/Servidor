@@ -63,4 +63,9 @@ export interface NotaRepository {
     fastify: FastifyInstance
   ): Promise<PatchNotaResponse>;
 
+  delete(
+    id: string,
+    fastify: FastifyInstance
+  ): Promise<void>;
+
 }

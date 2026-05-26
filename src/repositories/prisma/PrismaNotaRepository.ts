@@ -110,4 +110,17 @@ export class PrismaNotaRepository
   };
 }
 
+async delete(
+  id: string,
+  fastify: FastifyInstance
+): Promise<void> {
+
+  await fastify.prisma.nota.delete({
+    where: {
+      id: id,
+    },
+  });
+
+}
+
 }
