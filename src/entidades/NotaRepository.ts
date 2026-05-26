@@ -26,6 +26,21 @@ export const CreateNotaSchema = z.object({
     status: string;
   }
 
+export const PatchNotaSchema = z.object({
+  text: z.string().optional(),
+  status: z.string().optional(),
+  data_aprovacao: z.coerce.date().optional(),
+});
+
+export type PatchNotaData =
+  z.infer<typeof PatchNotaSchema>;
+
+export interface PatchNotaResponse {
+  id: string;
+  text: string;
+  status: string;
+}
+
 export interface NotaRepository {
 
   read(
@@ -41,5 +56,11 @@ export interface NotaRepository {
     data: CreateNotaData,
     fastify: FastifyInstance
   ): Promise<CreateNotaResponse>;
+
+  patch(
+    id: string,
+    data: PatchNotaData,
+    fastify: FastifyInstance
+  ): Promise<PatchNotaResponse>;
 
 }

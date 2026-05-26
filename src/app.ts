@@ -22,6 +22,7 @@ import { getNotas } from "./routes/get-notas.js";
 import { getNotaById } from "./routes/get-nota-by-id.js";
 import { patchSolicitacao } from "./routes/patch-solicitacao.js";
 import { patchUsuario } from "./routes/patch-usuario.js";
+import { patchNota } from "./routes/patch-nota.js";
 import { postLogin } from "./routes/post-login.js";
 import { postNorma } from "./routes/post-norma.js";
 import { postRelacionarNorma } from "./routes/post-relacionar-norma.js";
@@ -89,6 +90,7 @@ export async function buildServer(opts = {}) {
 	await fastify.register(getNotas);
 	await fastify.register(getNotaById);
 	await fastify.register(postNota);
+	await fastify.register(patchNota);
 
 	return fastify;
 }

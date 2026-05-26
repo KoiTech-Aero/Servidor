@@ -5,6 +5,8 @@ import type {
   ReadNotaResponse,
   CreateNotaData,
   CreateNotaResponse,
+  PatchNotaData,
+  PatchNotaResponse,
 } from "../../entidades/NotaRepository.js";
 
 export class PrismaNotaRepository
@@ -74,5 +76,38 @@ export class PrismaNotaRepository
       status: nota.status,
     };
   }
+
+  async patch(
+  id: string,
+  data: PatchNotaData,
+  fastify: FastifyInstance
+): Promise<PatchNotaResponse> {
+
+  const nota =
+    await fastify.prisma.nota.update({
+      where: {
+        id: id,
+      },
+      data: {
+        ...(data.text !== undefined && {
+          text: data.text,
+        }),
+      
+        ...(data.status !== undefined && {
+          status: data.status as any,
+        }),
+      
+        ...(data.data_aprovacao !== undefined && {
+          data_aprovacao: data.data_aprovacao,
+        }),
+      },
+    });
+
+  return {
+    id: nota.id,
+    text: nota.text,
+    status: nota.status,
+  };
+}
 
 }
