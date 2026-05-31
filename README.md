@@ -13,8 +13,8 @@
 
 |                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a href="#-tecnologias">Tecnologias</a> • <a href="#-problema">Problema</a> • <a href="#-solucao">Solução</a> • <a href="#-repositorios">Repositórios</a> • <a href="#-roadmap">Roadmap</a> • <a href="#-cronograma-de-sprints">Cronograma</a>                            |
-| <a href="#-backlog-do-produto">Backlog</a> • <a href="#-branch-strategy">Branch Strategy</a> • <a href="#-arquitetura">Arquitetura</a> • <a href="#-estrutura-do-projeto">Estrutura</a> • <a href="#-manual-de-instalacao">Instalação</a> • <a href="#-equipe">Equipe</a> |
+| <a href="#tecnologias">Tecnologias</a> • <a href="#problema">Problema</a> • <a href="#solucao">Solução</a> • <a href="#repositorios">Repositórios</a> • <a href="#roadmap">Roadmap</a> • <a href="#cronograma">Cronograma</a>                            |
+| <a href="#backlog">Backlog</a> • <a href="#branchstrategy">Branch Strategy</a> • <a href="#arquitetura">Arquitetura</a> • <a href="#estrutura">Estrutura</a> • <a href="#manual">Instalação</a> • <a href="#equipe">Equipe</a> |
 
 </div>
 
@@ -78,7 +78,7 @@ A solução proposta consiste no desenvolvimento de um sistema para gerenciament
 | --------------- | :--------------: | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | 🔖 **SPRINT 1** | 🗓️ 16/03 - 05/04 | 📄 [Sprint 1 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2001.md) | 🎥 [Assistir](https://www.youtube.com/watch?v=e-QOllVsI6s) |
 | 🔖 **SPRINT 2** | 🗓️ 13/04 - 03/05 | 📄 [Sprint 2 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2002.md) | 🎥 [Assistir](https://www.youtube.com/watch?v=TPd1F329pM4) |
-| 🔖 **SPRINT 3** | 🗓️ 11/05 - 31/05 | 📄 [Sprint 3 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2003.md) | 🎥 [Assistir](#)                                           |
+| 🔖 **SPRINT 3** | 🗓️ 11/05 - 31/05 | 📄 [Sprint 3 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2003.md) | 🎥 [Assistir](https://www.youtube.com/watch?v=jP18nC-Def4)                                           |
 
 <br>
 
@@ -101,15 +101,15 @@ A solução proposta consiste no desenvolvimento de um sistema para gerenciament
 |  8   |   média    | Como gestor do sistema quero visualizar a lista de usuários cadastrados para que eu possa gerenciar quem tem acesso ao sistema      |      4       |   2    |   🟩   |
 |  9   |   média    | Como gestor do sistema quero alterar dados ou permissões de um usuário para que eu possa ajustar seu acesso quando necessário       |      5       |   2    |   🟩   |
 |  10  |   baixa    | Como engenheiro quero solicitar o cadastro de uma norma para que ela seja adquirida ou cadastrada pela empresa                      |      7       |   2    |   🟩   |
-|  11  |    alta    | Como engenheiro quero solicitar uma nota para uma norma para registrar observações ou interpretações técnicas                       |      8       |   3    |   ❌   |
-|  12  |    alta    | Como engenheiro quero pesquisar normas pelo código ou pelo nome para encontrar rapidamente uma norma específica                     |      6       |   3    |   ❌   |
-|  13  |   média    | Como gestor do sistema quero aprovar ou rejeitar notas solicitadas para controlar o conteúdo exibido no sistema                     |      7       |   3    |   ❌   |
-|  14  |   média    | Como engenheiro, quero visualizar todas as notas no sistema, para entender observações relevantes                                   |      7       |   3    |   ❌   |
-|  15  |   média    | Como gestor do sistema quero cadastrar novas tags para classificar normas de forma padronizada                                      |      5       |   3    |   ❌   |
-|  16  |   média    | Como gestor do sistema quero associar tags às normas para melhorar a organização e busca                                            |      5       |   3    |   ❌   |
-|  17  |   média    | Como engenheiro quero pesquisar normas por palavras-chave (tags) para encontrar normas relacionadas a um tema técnico               |      7       |   3    |   ❌   |
-|  18  |   média    | Como engenheiro, quero visualizar as solicitações de normas realizadas, para poder avaliar suas implementações no sistema               |      5       |   3    |   ❌   |
-|  19  |   baixa    | Como engenheiro, quero aprovar ou rejeitar uma solicitação de norma, para que o cadastro de normas seja criterioso               |      6       |   3    |   ❌   |
+|  11  |    alta    | Como engenheiro quero solicitar uma nota para uma norma para registrar observações ou interpretações técnicas                       |      8       |   3    |   🟩   |
+|  12  |    alta    | Como engenheiro quero pesquisar normas pelo código ou pelo nome para encontrar rapidamente uma norma específica                     |      6       |   3    |   🟩   |
+|  13  |   média    | Como gestor do sistema quero aprovar ou rejeitar notas solicitadas para controlar o conteúdo exibido no sistema                     |      7       |   3    |   🟩   |
+|  14  |   média    | Como engenheiro, quero visualizar todas as notas no sistema, para entender observações relevantes                                   |      7       |   3    |   🟩   |
+|  15  |   média    | Como gestor do sistema quero cadastrar novas tags para classificar normas de forma padronizada                                      |      5       |   3    |   🟩   |
+|  16  |   média    | Como gestor do sistema quero associar tags às normas para melhorar a organização e busca                                            |      5       |   3    |   🟩   |
+|  17  |   média    | Como engenheiro quero pesquisar normas por palavras-chave (tags) para encontrar normas relacionadas a um tema técnico               |      7       |   3    |   🟩   |
+|  18  |   média    | Como engenheiro, quero visualizar as solicitações de normas realizadas, para poder avaliar suas implementações no sistema               |      5       |   3    |   🟩   |
+|  19  |   baixa    | Como engenheiro, quero aprovar ou rejeitar uma solicitação de norma, para que o cadastro de normas seja criterioso               |      6       |   3    |   🟩   |
 
 <br>
 
@@ -185,6 +185,8 @@ Optamos por utilizar a arquitetura multirepo com o objetivo de separar melhor as
 │   │   │   └── 📄 migration.sql
 │   │   ├── 📁 20260503135455_remove_vizualizador_for_visualizador
 │   │   │   └── 📄 migration.sql
+│   │   ├── 📁 20260523032341_referential_actions_norma
+│   │   │   └── 📄 migration.sql
 │   │   └── ⚙️ migration_lock.toml
 │   ├── 📁 models
 │   │   ├── 📄 norma-referencia.prisma
@@ -200,7 +202,9 @@ Optamos por utilizar a arquitetura multirepo com o objetivo de separar melhor as
 │   ├── 📁 entidades
 │   │   ├── 📄 NormaReferenciaRepository.ts
 │   │   ├── 📄 NormaRepository.ts
+│   │   ├── 📄 NotaRepository.ts
 │   │   ├── 📄 SolicitacaoRepository.ts
+│   │   ├── 📄 TagRepository.ts
 │   │   ├── 📄 UsuarioRepository.ts
 │   │   ├── 📄 VersaoRepository.ts
 │   │   └── 📄 prismaError.ts
@@ -210,7 +214,9 @@ Optamos por utilizar a arquitetura multirepo com o objetivo de separar melhor as
 │   │   └── 📁 prisma
 │   │       ├── 📄 PrismaNormaReferenciaRepository.ts
 │   │       ├── 📄 PrismaNormaRepository.ts
+│   │       ├── 📄 PrismaNotaRepository.ts
 │   │       ├── 📄 PrismaSolicitacaoRepository.ts
+│   │       ├── 📄 PrismaTagRepository.ts
 │   │       ├── 📄 PrismaUsuarioRepository.ts
 │   │       └── 📄 PrismaVersaoRepository.ts
 │   ├── 📁 routes
@@ -218,33 +224,53 @@ Optamos por utilizar a arquitetura multirepo com o objetivo de separar melhor as
 │   │   │   ├── 📄 get-norma.test.ts
 │   │   │   ├── 📄 post-norma.test.ts
 │   │   │   └── 📄 solicitacao.test.ts
+│   │   ├── 📄 delete-norma.ts
+│   │   ├── 📄 delete-nota.ts
 │   │   ├── 📄 delete-relacionar-norma.ts
+│   │   ├── 📄 delete-tag.ts
 │   │   ├── 📄 get-norma.ts
+│   │   ├── 📄 get-nota-by-id.ts
+│   │   ├── 📄 get-notas.ts
 │   │   ├── 📄 get-relacionar-norma.ts
 │   │   ├── 📄 get-solicitacao.ts
+│   │   ├── 📄 get-tags.ts
 │   │   ├── 📄 get-usuarioID.ts
 │   │   ├── 📄 get-usuarios.ts
+│   │   ├── 📄 patch-nota.ts
+│   │   ├── 📄 patch-solicitacao.ts
 │   │   ├── 📄 patch-usuario.ts
 │   │   ├── 📄 post-login.ts
 │   │   ├── 📄 post-norma.ts
+│   │   ├── 📄 post-nota.ts
 │   │   ├── 📄 post-relacionar-norma.ts
 │   │   ├── 📄 post-solicitar-norma.ts
+│   │   ├── 📄 post-tag.ts
 │   │   ├── 📄 post-usuario.ts
 │   │   ├── 📄 post-versao.ts
 │   │   └── 📄 put-usuario.ts
 │   ├── 📁 services
 │   │   ├── 📄 associateNorma.ts
 │   │   ├── 📄 createNorma.ts
+│   │   ├── 📄 createNota.ts
 │   │   ├── 📄 createSolicitacao.ts
+│   │   ├── 📄 createTag.ts
 │   │   ├── 📄 createUsuario.ts
 │   │   ├── 📄 createVersao.ts
 │   │   ├── 📄 deleteNorma.ts
+│   │   ├── 📄 deleteNormaReferencia.ts
+│   │   ├── 📄 deleteNota.ts
+│   │   ├── 📄 deleteTag.ts
 │   │   ├── 📄 getSolicitacao.ts
 │   │   ├── 📄 getUsuario.ts
 │   │   ├── 📄 login.ts
+│   │   ├── 📄 patchNota.ts
+│   │   ├── 📄 patchSolicitacao.ts
 │   │   ├── 📄 patchUsuario.ts
 │   │   ├── 📄 readNorma.ts
 │   │   ├── 📄 readNormaReferencia.ts
+│   │   ├── 📄 readNota.ts
+│   │   ├── 📄 readNotaById.ts
+│   │   ├── 📄 readTag.ts
 │   │   ├── 📄 readUsuario.ts
 │   │   └── 📄 updateUsuario.ts
 │   ├── 📁 tests
@@ -280,39 +306,124 @@ Optamos por utilizar a arquitetura multirepo com o objetivo de separar melhor as
 │       └── ⚙️ update_submodule.yaml
 ├── 📁 Documentos
 ├── 📁 src
+│   ├── 📁 assets
+│   │   └── 📁 roles
+│   │       ├── 🖼️ engenheiro.png
+│   │       ├── 🖼️ gestor.png
+│   │       └── 🖼️ visualizador.png
 │   ├── 📁 components
+│   │   ├── 📁 form
+│   │   │   ├── 📄 areaTecnicaSelect.tsx
+│   │   │   ├── 📄 fileUpload.tsx
+│   │   │   ├── 📄 formButtons.tsx
+│   │   │   ├── 📄 formSection.tsx
+│   │   │   ├── 📄 inputField.tsx
+│   │   │   ├── 📄 selectField.tsx
+│   │   │   ├── 📄 tagsInput.tsx
+│   │   │   └── 📄 textAreaField.tsx
+│   │   ├── 📁 menu
+│   │   │   ├── 📄 desktopSidebar.tsx
+│   │   │   ├── 📄 menuItem.tsx
+│   │   │   ├── 📄 menuSecao.tsx
+│   │   │   ├── 📄 mobileBottombar.tsx
+│   │   │   ├── 📄 mobileModal.tsx
+│   │   │   └── 📄 usuarioCard.tsx
+│   │   ├── 📁 solicitacoes
+│   │   │   ├── 📄 solicitacaoCard.tsx
+│   │   │   ├── 📄 solicitacaoModal.tsx
+│   │   │   └── 📄 solicitacaoRow.tsx
+│   │   ├── 📁 usuarios
+│   │   │   ├── 📄 usuarioAvatar.tsx
+│   │   │   ├── 📄 usuarioRow.tsx
+│   │   │   └── 📄 usuarioStatusBadge.tsx
 │   │   ├── 📄 AcessoNegado.jsx
-│   │   ├── 📄 BarraPesquisa.jsx
-│   │   ├── 📄 FiltroArea.jsx
-│   │   ├── 📄 Header.jsx
-│   │   ├── 📄 Menu.jsx
-│   │   └── 📄 NormaPreview.jsx
+│   │   ├── 📄 BarraPesquisa.tsx
+│   │   ├── 📄 Header.tsx
+│   │   ├── 📄 NormaPreview.jsx
+│   │   ├── 📄 badge.tsx
+│   │   ├── 📄 icon.tsx
+│   │   ├── 📄 linhaHorizontal.tsx
+│   │   ├── 📄 menuLateral.tsx
+│   │   ├── 📄 modalReferencias.tsx
+│   │   ├── 📄 normaRow.tsx
+│   │   ├── 📄 referenciaCard.tsx
+│   │   ├── 📄 statusBadge.tsx
+│   │   ├── 📄 statusVersao.tsx
+│   │   ├── 📄 tag.tsx
+│   │   ├── 📄 tagsSearch.tsx
+│   │   ├── 📄 text.tsx
+│   │   └── 📄 versaoCard.tsx
 │   ├── 📁 context
-│   │   ├── 📄 AuthContext.jsx
-│   │   └── 📄 AuthProvider.jsx
+│   │   ├── 📄 AuthContext.tsx
+│   │   └── 📄 NormaContext.ts
 │   ├── 📁 enums
 │   │   ├── 📄 permissoes.js
 │   │   ├── 📄 rolePermissoes.js
 │   │   └── 📄 roles.js
+│   ├── 📁 hooks
+│   │   ├── 📄 useCadastrarNorma.ts
+│   │   ├── 📄 useCadastrarNota.ts
+│   │   ├── 📄 useCadastrarSolicitacao.ts
+│   │   ├── 📄 useCadastrarTag.ts
+│   │   ├── 📄 useCadastrarUsuario.ts
+│   │   ├── 📄 useEditarUsuario.ts
+│   │   ├── 📄 useNormaContext.ts
+│   │   ├── 📄 useNormas.ts
+│   │   ├── 📄 useTags.ts
+│   │   ├── 📄 useVisualizarSolicitacoes.ts
+│   │   └── 📄 useVisualizarUsuarios.ts
 │   ├── 📁 layouts
 │   │   ├── 📄 LayoutAuth.jsx
 │   │   └── 📄 LayoutSistema.jsx
 │   ├── 📁 pages
-│   │   ├── 📄 CadastrarNorma.jsx
-│   │   ├── 📄 CadastrarUsuario.jsx
-│   │   ├── 📄 CadastrarVersao.jsx
+│   │   ├── 📄 CadastrarNorma.tsx
+│   │   ├── 📄 CadastrarTag.tsx
+│   │   ├── 📄 CadastrarUsuario.tsx
+│   │   ├── 📄 CadastrarVersao.tsx
 │   │   ├── 📄 EditarUsuario.jsx
 │   │   ├── 📄 Login.jsx
-│   │   ├── 📄 PesquisarNorma.jsx
-│   │   ├── 📄 SolicitarNorma.jsx
-│   │   ├── 📄 VisualizarNorma.jsx
-│   │   ├── 📄 VisualizarUsuarios.jsx
-│   │   └── 📄 VisualizarVersao.jsx
+│   │   ├── 📄 PesquisarNorma.tsx
+│   │   ├── 📄 SolicitarNorma.tsx
+│   │   ├── 📄 SolicitarNota.tsx
+│   │   ├── 📄 VisualizarNorma.tsx
+│   │   ├── 📄 VisualizarNotas.tsx
+│   │   ├── 📄 VisualizarSolicitacoes.tsx
+│   │   ├── 📄 VisualizarUsuarios.tsx
+│   │   └── 📄 VisualizarVersao.tsx
+│   ├── 📁 providers
+│   │   ├── 📄 AuthProvider.jsx
+│   │   └── 📄 normaProvider.tsx
 │   ├── 📁 routes
 │   │   └── 📄 RotaPrivada.jsx
 │   ├── 📁 services
-│   │   └── 📄 api.js
+│   │   ├── 📄 api.ts
+│   │   ├── 📄 normaService.ts
+│   │   └── 📄 usuarioService.ts
+│   ├── 📁 types
+│   │   ├── 📄 areaTecnicaSelect.ts
+│   │   ├── 📄 authContext.ts
+│   │   ├── 📄 cadastrarNormaForm.ts
+│   │   ├── 📄 cadastrarSolicitacaoForm.ts
+│   │   ├── 📄 cadastrarTagForm.ts
+│   │   ├── 📄 cadastrarUsuarioForm.ts
+│   │   ├── 📄 fileUpload.ts
+│   │   ├── 📄 formButtons.ts
+│   │   ├── 📄 formSection.ts
+│   │   ├── 📄 inputField.ts
+│   │   ├── 📄 listarUsuarios.ts
+│   │   ├── 📄 menuItemData.ts
+│   │   ├── 📄 norma.ts
+│   │   ├── 📄 referencia.ts
+│   │   ├── 📄 selectField.ts
+│   │   ├── 📄 solicitacaoNorma.ts
+│   │   ├── 📄 tags.ts
+│   │   ├── 📄 tagsInput.ts
+│   │   ├── 📄 textAreaField.ts
+│   │   └── 📄 usuarioLogado.ts
 │   ├── 📁 utils
+│   │   ├── 📄 areasTecnicasData.ts
+│   │   ├── 📄 itensMenu.ts
+│   │   ├── 📄 tagsMockData.ts
 │   │   └── 📄 temPermissao.js
 │   ├── 🎨 App.css
 │   ├── 📄 App.jsx
@@ -325,6 +436,11 @@ Optamos por utilizar a arquitetura multirepo com o objetivo de separar melhor as
 ├── 🌐 index.html
 ├── ⚙️ package-lock.json
 ├── ⚙️ package.json
+├── ⚙️ tsconfig.app.json
+├── ⚙️ tsconfig.json
+├── ⚙️ tsconfig.node.json
+├── ⚙️ vercel.json
+├── 📄 vite-env.d.ts
 └── 📄 vite.config.js
 ```
 
@@ -363,6 +479,7 @@ Como executar:
  - Clonar o repositório com o comando: git clone https://github.com/KoiTech-Aero/Frontend.git
  - Dentro de "Frontend", executar a sequência de comandos:
  	npm install
+	crie o arquivo `.env` na raiz o projeto com a variável "VITE_SERVER_URL=http://localhost:3000"
  	npm run dev
 ```
 
