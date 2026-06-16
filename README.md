@@ -11,11 +11,15 @@
 
 <div align="center">
 
-|                                                                                                                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a href="#tecnologias">Tecnologias</a> • <a href="#problema">Problema</a> • <a href="#solucao">Solução</a> • <a href="#repositorios">Repositórios</a> • <a href="#roadmap">Roadmap</a> • <a href="#cronograma">Cronograma</a>                            |
+|                                                                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a href="#tecnologias">Tecnologias</a> • <a href="#problema">Problema</a> • <a href="#solucao">Solução</a> • <a href="#repositorios">Repositórios</a> • <a href="#roadmap">Roadmap</a> • <a href="#cronograma">Cronograma</a>  |
 | <a href="#backlog">Backlog</a> • <a href="#branchstrategy">Branch Strategy</a> • <a href="#arquitetura">Arquitetura</a> • <a href="#estrutura">Estrutura</a> • <a href="#manual">Instalação</a> • <a href="#equipe">Equipe</a> |
 
+</div>
+
+<div align="center">
+<a href="https://www.youtube.com/watch?v=eS4vuLcupuk">Acesse aqui a demonstração do produto final</a>
 </div>
 
 <br>
@@ -78,7 +82,7 @@ A solução proposta consiste no desenvolvimento de um sistema para gerenciament
 | --------------- | :--------------: | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | 🔖 **SPRINT 1** | 🗓️ 16/03 - 05/04 | 📄 [Sprint 1 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2001.md) | 🎥 [Assistir](https://www.youtube.com/watch?v=e-QOllVsI6s) |
 | 🔖 **SPRINT 2** | 🗓️ 13/04 - 03/05 | 📄 [Sprint 2 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2002.md) | 🎥 [Assistir](https://www.youtube.com/watch?v=TPd1F329pM4) |
-| 🔖 **SPRINT 3** | 🗓️ 11/05 - 31/05 | 📄 [Sprint 3 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2003.md) | 🎥 [Assistir](https://www.youtube.com/watch?v=jP18nC-Def4)                                           |
+| 🔖 **SPRINT 3** | 🗓️ 11/05 - 31/05 | 📄 [Sprint 3 Docs](https://github.com/KoiTech-Aero/Documentos/blob/main/sprints/SPRINT%2003.md) | 🎥 [Assistir](https://www.youtube.com/watch?v=jP18nC-Def4) |
 
 <br>
 
@@ -108,8 +112,8 @@ A solução proposta consiste no desenvolvimento de um sistema para gerenciament
 |  15  |   média    | Como gestor do sistema quero cadastrar novas tags para classificar normas de forma padronizada                                      |      5       |   3    |   🟩   |
 |  16  |   média    | Como gestor do sistema quero associar tags às normas para melhorar a organização e busca                                            |      5       |   3    |   🟩   |
 |  17  |   média    | Como engenheiro quero pesquisar normas por palavras-chave (tags) para encontrar normas relacionadas a um tema técnico               |      7       |   3    |   🟩   |
-|  18  |   média    | Como engenheiro, quero visualizar as solicitações de normas realizadas, para poder avaliar suas implementações no sistema               |      5       |   3    |   🟩   |
-|  19  |   baixa    | Como engenheiro, quero aprovar ou rejeitar uma solicitação de norma, para que o cadastro de normas seja criterioso               |      6       |   3    |   🟩   |
+|  18  |   média    | Como engenheiro, quero visualizar as solicitações de normas realizadas, para poder avaliar suas implementações no sistema           |      5       |   3    |   🟩   |
+|  19  |   baixa    | Como engenheiro, quero aprovar ou rejeitar uma solicitação de norma, para que o cadastro de normas seja criterioso                  |      6       |   3    |   🟩   |
 
 <br>
 
@@ -448,7 +452,7 @@ Optamos por utilizar a arquitetura multirepo com o objetivo de separar melhor as
 
 ## ⚙️ **Manual de instalação** <a id="manual"></a>
 
-### Servidor
+### 1. Servidor
 
 ```
 Requisitos:
@@ -456,31 +460,99 @@ Requisitos:
  - Docker
 ```
 
+**Passo a Passo:**
+
+Clonar o repositório:
+
 ```
-Como executar:
- - Clonar o repositório com o comando: git clone https://github.com/KoiTech-Aero/Servidor.git
- - Dentro de "Servidor", executar a sequência de comandos
- 	npm install
- 	cp .env.sample .env.test
- 	npx prisma generate dev
- 	npm run cli (parâmetros: test; db:up)
- 	npm run cli (parâmetros: test; dev)
+git clone https://github.com/KoiTech-Aero/Servidor.git
 ```
 
-### Frontend
+Acessar o repositório baixado:
+
+```
+cd Servidor
+```
+
+Instalar as dependências da aplicação:
+
+```
+npm i
+```
+
+Criar o arquivo responsável pelas variáveis de ambiente:
+
+```
+cp .env.sample .env.test
+```
+
+Gerar o cliente do prisma:
+
+```
+npx prisma generate dev
+```
+
+Criar o banco de dados:
+
+```
+npm run cli
+
+Pergunta 1: Qual ambiente?
+Resposta: test
+
+Pergunta 2: Qual o comando?
+Resposta: db:up
+```
+
+Executar a aplicação:
+
+```
+npm run cli
+
+Pergunta 1: Qual ambiente?
+Resposta: test
+
+Pergunta 2: Qual o comando?
+Resposta: dev
+```
+
+### 2. Frontend
 
 ```
 Requisitos:
  - Nodejs 24.14.1
 ```
 
+**Passo a passo**
+
+Clonar o repositório:
+
 ```
-Como executar:
- - Clonar o repositório com o comando: git clone https://github.com/KoiTech-Aero/Frontend.git
- - Dentro de "Frontend", executar a sequência de comandos:
- 	npm install
-	crie o arquivo `.env` na raiz o projeto com a variável "VITE_SERVER_URL=http://localhost:3000"
- 	npm run dev
+git clone https://github.com/KoiTech-Aero/Frontend.git
+```
+
+Acessar o repositório baixado:
+
+```
+cd Frontend
+```
+
+Criar o arquivo .env na raiz do projeto:
+
+```
+echo "VITE_SERVER_URL=http://localhost:3000" > .env
+```
+
+Instalar as dependências da aplicação:
+
+```
+npm i
+```
+
+Executar a aplicação:
+
+```
+npm run dev
 ```
 
 <br>
